@@ -2,7 +2,7 @@
   <div class="container">
     <About/>
     <v-cantainer>
-      <v-row class="work-experience"> 
+      <v-row class="work-experience" elvation="9"> 
         <v-col cols="12" md="6" lg="4" xl="3">
               <img src="/profile-pic (1).png" alt="Card image" />
         </v-col>
@@ -37,7 +37,10 @@
               size="small"
             ></v-btn>
               </a>
+              <br>
+              <v-btn class="mt-3" to="wwww.resume" target="_blank" style="border-radius: 20px"> resume </v-btn>
             </div>
+           
         </v-col>
       </v-row>
     </v-cantainer>
@@ -216,9 +219,9 @@ export default {
 }
 .icon-color .v-btn:hover
 {
-  background-color: white !important;
+  background-color: #ff4a57  !important;
   border: 1px solid #fe4b57;
-  color: #fe4b57 !important;
+  color: white !important;
 }
 .icon-color a {
   text-decoration: none !important;
@@ -242,7 +245,7 @@ export default {
 }
 .work-experience
 {
-  margin-top: 2rem;
+  margin-top: 7rem;
   background-color: #2d3047;
   color: white;
   border-top-left-radius: 50%;
@@ -279,10 +282,7 @@ margin-bottom: 8rem;
  
  
 }
-.v-btn:hover {
-  background: #888ba5 !important;
-  color: white !important;
-}
+
 
 .education {
   display: flex;
@@ -315,7 +315,8 @@ margin-bottom: 8rem;
 img {
   width: 100%;
   height: auto;
-  opacity: .7;
+ opacity: .9;
+  margin-top: 2.5rem;
   
 }
 

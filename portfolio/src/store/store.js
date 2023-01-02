@@ -1,8 +1,7 @@
 import { createStore } from 'vuex'
 import * as firebase from '../Firebase/firebase'
 import route from '../router/index'
-import { doc, setDoc,} from "firebase/firestore";
-import { getDoc } from "firebase/firestore";
+import { getDoc, deleteDoc, doc, setDoc } from "firebase/firestore";
 
 const store = createStore({
   state: {

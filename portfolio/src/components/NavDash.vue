@@ -3,13 +3,11 @@
     <v-navigation-drawer class="text-white" app v-model="drawer" style="background-color:#202236 !important;">
       <v-responsive class="pt-4 text-center">
         <v-avatar size="100px" class="bg-grey lighten-2">
-          <img src="" alt="avator" />
+          <img src="./avatar.jpeg" alt="avator" />
         </v-avatar>
         <p class="text-grey mt-2">Isaac Mhlanga</p>
       </v-responsive>
       <v-list density="compact">
-        <v-list-subheader>Menu</v-list-subheader>
-
         <v-list-item
           v-for="(item, i) in links"
           :key="i"
@@ -82,6 +80,10 @@ export default {
 .v-app-bar
 {
   background-color: #202236  !important;
+}
+.v-icon
+{
+  padding-left: 25px;
 }
  
 </style>

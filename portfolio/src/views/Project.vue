@@ -14,6 +14,9 @@
           and I welcome the opportunity to collaborate and learn from others.
         </p>
       </div>
+      <div class="container">
+
+     
       <v-row justify-center>
         <v-col>
           <v-card>
@@ -47,9 +50,7 @@
           <section class="testimonial text-center">
             <div class="container">
     
-              
                 <div id="testimonial4" class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x" data-ride="carousel" data-pause="hover" data-interval="5000" data-duration="2000">
-                 
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
                             <div class="testimonial4_slide">
@@ -76,6 +77,7 @@
         </section>
         </v-col>
       </v-row>
+    </div>
     </div>
   </v-container>
 </template>

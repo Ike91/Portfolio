@@ -24,11 +24,13 @@
           </v-card-actions>
         </v-card>
 
-        <v-dialog  persistent v-model="deleteDialog" width="300">
+        <v-dialog  persistent v-model="deleteDialog" width="600">
           <v-card>
             <v-card-title>Delete Project</v-card-title>
+            <v-divider></v-divider>
            
-            <v-card-text >Are you sure you want to delete <b>{{ pname }}</b></v-card-text>
+           
+            <v-card-text class="text-center">Are you sure you want to delete <b class="text-grey">{{ pname }}</b></v-card-text>
             <br>
             <v-card-actions class="text-white">
               <v-btn 
@@ -38,7 +40,7 @@
               @click="deleteProject">
               Delete
             </v-btn>
-              <v-btn class="bg-secondary text-caption" prepend-icon="mdi-close" @click="deleteDialog= !deleteDialog">Close</v-btn>
+              <v-btn class="bg-secondary text-white text-caption" prepend-icon="mdi-close" @click="deleteDialog= !deleteDialog">Cancel</v-btn>
             </v-card-actions>
 
           </v-card>
@@ -50,6 +52,7 @@
 <script>
 import NavDash from "../../components/NavDash.vue";
 import { firestore, projects } from "../../Firebase/firebase";
+import { deleteDoc, doc} from "firebase/firestore";
 import pForm from "../../components/pForm.vue";
 export default {
   components: {
@@ -84,7 +87,7 @@ export default {
     },
 
        //delete project 
-       async deleteConfirm(id, name)
+    async deleteConfirm(id, name)
     {
       this.deleteDialog  = true,
       this.pid = id,
@@ -96,6 +99,7 @@ export default {
       try {
 
         this.isDeleting = true,
+        alert(this.pid)
         await projects.doc(this.pid).delete()
        
         alert('Project Deleted')
@@ -121,8 +125,8 @@ export default {
 }
 .v-expansion-panel, .v-card {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
- 
-  background: rgb(219, 210, 210);
+  color: white;
+  background: #35394e;
 }
 .v-btn {
    
@@ -130,7 +134,7 @@ export default {
 }
 .v-divider 
 {
-  background-color: #fe4b57 !important;
+  background-color: grey !important;
 }
 .v-card-actions
 {
@@ -144,5 +148,7 @@ export default {
 .v-card 
 {
   margin-bottom: 2em;
+  background: #35394e;
 }
+
 </style>

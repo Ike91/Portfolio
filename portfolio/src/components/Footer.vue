@@ -12,17 +12,14 @@
       class="indigo lighten-1 white--text text-center"
     >
       <v-card-text>
-        <v-btn
-          v-for="icon in icons"
-          :key="icon"
-          class="mx-4 white--text"
-          icon
-          flat
-        >
-          <v-icon size="24px">
-            {{ icon }}
-          </v-icon>
-        </v-btn>
+        <a  v-for="icon in icons" :key="icon.icon" :href="icon.link" target="_blank">
+          <v-btn
+          color="grey"
+          class="mx-2 btn-radius"
+          :icon="icon.icon"
+          size="small"
+        ></v-btn>
+          </a>
       </v-card-text>
 
       <v-card-text class="white--text pt-0">
@@ -44,23 +41,38 @@
   export default {
     data: () => ({
       icons: [
-        "mdi-facebook",
-        "mdi-twitter",
-        "mdi-linkedin",
-        "mdi-instagram",
-        "mdi-github",
+        {
+          icon: "mdi-facebook",
+          link: "https://www.facebook.com/profile.php?id=100072606405818",
+        },
+        {
+          icon: "mdi-linkedin",
+          link: "https://www.linkedin.com/in/isaac-mhlanga-31ba62217",
+        },
+        {
+          icon: "mdi-instagram",
+          link: "https://www.instagram.com/_isac_i",
+        },
+        {
+          icon: "mdi-twitter",
+          link: "https://twitter.com/_Isaac_ike1",
+        },
+        {
+          icon: "mdi-github",
+          link: "https://github.com/Ike91",
+        }
       ],
     }),
   };
   </script>
   <style scoped>
   .v-footer {
-    background-color: #202236 !important;
+    background-color: #1c1e2e !important;
     color: white;
   }
   .v-card 
   {
-    background-color: #202236 !important;
+    background-color: #1c1e2e  !important;
     color: white;
   }
   .v-btn {
@@ -68,6 +80,10 @@
     background-color: transparent !important;
     border: 1px solid #fe4b57;
    
+  }
+  a
+  {
+    text-decoration: none !important;
   }
   </style>
   

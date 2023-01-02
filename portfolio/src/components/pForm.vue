@@ -12,7 +12,7 @@
         </v-btn> 
       </v-col>
     </v-row>
-      <v-dialog v-model="dialog" width="600" >
+      <v-dialog v-model="dialog" width="600">
       <v-row>
         <v-col>
           <v-card>
@@ -104,7 +104,6 @@ methods: {
       this.isSaving = true;
 
       let data = {
-        id: auth.currentUser.uid,
         name: this.name,
         discription: this.discription,
         link: this.link,
@@ -112,7 +111,12 @@ methods: {
       };
 
       //save data on firestore
-      const doc = await projects.add(data);
+      const doc = await projects.add(data).then(function(docRef){
+        //Update the document id
+        docRef.update({
+          id: docRef.id
+        })
+      });
 
       this.isSaving = false;
 

@@ -163,10 +163,6 @@ export default {
 .v-card-title {
   text-align: center;
 }
-.v-card {
-  background: rgb(219, 210, 210);
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-}
 .v-btn
 {
   width: 80px;
@@ -196,7 +192,7 @@ input[type="file"] {
 }
 
 .skills-container .v-card {
-  background: rgb(219, 210, 210);
+  background: #35394e;
   border-radius: 8px;
   color: rgb(77, 76, 76);
   width: 100% !important;
