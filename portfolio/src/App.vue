@@ -33,6 +33,6 @@ export default {
 </script>
 <style scoped>
 .v-main {
-  background: #f0f0f5 !important;
+  background: #1f2235 !important;
 }
 </style>

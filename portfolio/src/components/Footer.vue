@@ -1,9 +1,11 @@
 <template>
+  
   <v-footer
     dark
     padless
     v-if="$route.meta.hideFooter"
   >
+  <hr>
     <v-card
       flat
       tile
@@ -59,11 +61,12 @@
   .v-card 
   {
     background-color: #202236 !important;
-    color: grey;
+    color: white;
   }
   .v-btn {
-    color: #fe4b57 !important;
+    color:  white !important;
     background-color: transparent !important;
+    border: 1px solid #fe4b57;
    
   }
   </style>

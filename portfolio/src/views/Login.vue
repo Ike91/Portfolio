@@ -15,14 +15,7 @@
       <div class="login-section">
         <v-row justify="center">
           <v-col md="4" >
-            <v-card class="login-card" elevation="1">
-              <v-responsive class="pt-4 text-center">
-                <v-avatar size="100px" class="bg-grey lighten-2">
-                  <img src="./ike.png" alt="avator" />
-                </v-avatar>
-                <p class="text-grey mt-2">Isaac Mhlanga</p>
-              </v-responsive>
-  
+            <v-card class="login-card pt-4" elevation="1">
               <v-card-text>
                 <v-form @submit.prevent>
                   <v-text-field
@@ -129,7 +122,7 @@
   
   .login-header {
     text-align: center;
-    color: rgb(77, 76, 76);
+    color: white;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     padding: 1rem;
     position: relative;
@@ -137,9 +130,10 @@
   
  
   .login-card {
-    background: rgb(219, 210, 210) !important;
+    background: #35394e !important;
     padding-right: 15px;
     border-radius: 8px;
+    color: white;
     
   }
   .v-conatiner {

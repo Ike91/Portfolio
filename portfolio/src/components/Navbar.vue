@@ -122,12 +122,12 @@ export default {
 </script>
 <style scoped>
 .v-toolbar {
-  background-color: #202236 !important;
+  background-color: #1f2235 !important;
 }
 .v-toolbar-items {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  color: grey;
+  color: white;
 }
 .v-toolbar-items .v-btn:hover {
   color: #fe4b57 !important;

@@ -4,21 +4,22 @@
     <v-cantainer>
       <v-row class="work-experience"> 
         <v-col cols="12" md="6" lg="4" xl="3">
-              <img src="/profile-pic.png" alt="Card image" />
+              <img src="/profile-pic (1).png" alt="Card image" />
         </v-col>
-        <v-col cols="12" md="12" lg="6" xl="3">
+        <v-col class="about-content ml-15" cols="12" md="12" lg="6" xl="6">
           <div class="text-center name-header pt-3">
             <h1>Isaac Ike Mhlanga</h1>
             <h5>Software developer</h5>
         <div class="pt-1">
-          <span style="color: #fe57c0">
+          <span style="color: #fe4b57">
             <v-icon class="mx-0">mdi-phone</v-icon>
             +27 671004050
           </span>
-          <span style="color: #fe57c0">
+          <span style="color: #fe4b57">
             <v-icon class="mx-1">mdi-email</v-icon>
            isaac.mhlanga13@gmail.com
           </span>
+         
         </div>
         </div>
          <p class="pt-2 text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
@@ -28,21 +29,21 @@
             voluptatum dolores unde architecto, cupiditate culpa ab corrupti neque dicta. Blanditiis sequi 
          </p>
             <div class="text-center icon-color pb-3">
+              <a  v-for="icon in icons" :key="icon.icon" :href="icon.link" target="_blank">
               <v-btn
-              v-for="icon in icons"
-              :key="icon"
               color="grey"
               class="mx-2 btn-radius"
-              :icon="icon"
+              :icon="icon.icon"
               size="small"
             ></v-btn>
+              </a>
             </div>
         </v-col>
       </v-row>
     </v-cantainer>
     <v-container class="skill-container" app>
       <div class="skill-header">
-        <span><h3><v-icon style="color: #fe4b57 !important;">mdi-lightbulb-on</v-icon></h3></span>
+        <span><h3><v-icon style="color: #ff4a57 !important;">mdi-lightbulb-on</v-icon> <span class="skills-adjust"></span></h3></span>
       </div>
         <hr style="color: #6c6c69 !important" />
       <div class="skills">
@@ -55,36 +56,66 @@
           to apply them to solve complex problems and develop innovative
           solutions.
         </p>
-        <v-btn class="text-caption">Go to skills</v-btn>
+          <v-btn class="text-caption" to="/skills">Go to skills</v-btn>
       </div>
-      <v-row class="work-experience pt-3"> 
-        <v-col cols="12" md="6" lg="4" xl="3">
+      <v-row class=" pt-3"> 
+        <v-col cols="12" md="6" lg="4" xl="4">
           <v-card elevation="9">
             <v-card-text>
-              <p>-Experience working with HTML5</p>
-              <p>-Experience working with CSS3</p>
-              <p>-Experience working with Javascript</p>
-              <p>-Experience working with git and github</p>
+              <p>Experience working with HTML5</p>
+              <p>Experience working with CSS3</p>
+              <p>Experience working with Javascript</p>
+              
             </v-card-text>
           </v-card>
         </v-col>
-        <v-col cols="12" md="6" lg="4" xl="3">
+        <v-col cols="12" md="6" lg="4" xl="4">
           <v-card elevation="9">
             <V-card-text>
-              <p>-Experience working with java</p>
-              <p>-Experience working with c++</p>
-              <p>-Experience working with c#</p>
-              <p>-Experience working with Node.JS</p>
+              <p>Experience working with java</p>
+              <p>Experience working with c++</p>
+              <p>Experience working with c#</p>
+             
             </V-card-text>
           </v-card>
         </v-col>
-        <v-col cols="12" md="6" lg="4" xl="3">
+        <v-col cols="12" md="6" lg="4" xl="4">
           <v-card elevation="9">
             <v-card-text>
-              <p>-Experience working with laravel</p>
-              <p>-Experience working with Vue.js</p>
-              <p>-Experience working with PHP</p>
-              <p>-Experience Working with SQL</p>
+              <p>Experience working with laravel</p>
+              <p>Experience working with Vue.js</p>
+              <p>Experience working with PHP</p>
+             
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col cols="12" md="6" lg="4" xl="4">
+          <v-card elevation="9">
+            <v-card-text>
+              <p>Experience working with laravel</p>
+              <p>Experience working with Vue.js</p>
+              <p>Experience working with PHP</p>
+             
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col cols="12" md="6" lg="4" xl="4">
+          <v-card elevation="9">
+            <v-card-text>
+              <p>Experience working with laravel</p>
+              <p>Experience working with Vue.js</p>
+              <p>Experience working with PHP</p>
+            
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col cols="12" md="6" lg="4" xl="4">
+          <v-card elevation="9">
+            <v-card-text>
+              <p>Experience working with laravel</p>
+              <p>Experience working with Vue.js</p>
+              <p>Experience working with PHP</p>
+              
             </v-card-text>
           </v-card>
         </v-col>
@@ -92,10 +123,10 @@
     </v-container>
     <v-container>
       <div class="skill-header">
-        <h3><v-icon style="color: #fe4b57 !important;">mdi-briefcase</v-icon></h3>
+        <h3><v-icon style="color: #ff4a57 !important;">mdi-briefcase</v-icon></h3>
       </div>
 
-      <hr style="color: #6c6c69 !important" />
+      <hr style="color: #888ba5 !important" />
       <div>
         <p>
           I have gained a strong foundation in various technologies through
@@ -109,15 +140,15 @@
           developed the skills and knowledge necessary to apply them
           effectively.
         </p>
-        <v-btn class="text-caption">Go to projects</v-btn>
+        <v-btn class="text-caption" to="/project">Go to projects</v-btn>
       </div>
     </v-container>
     <v-container>
       <div class="skill-header">
-        <h3>Interests</h3>
+        <span><h3><v-icon style="color: #ff4a57 !important;">mdi-lightbulb</v-icon> <span class="skills-adjust"></span></h3></span>
       </div>
 
-      <hr style="color: #6c6c69 !important" />
+      <hr style="color: #888ba5 !important" />
       <div>
         <p>
           As someone who is interested in machine learning and data science, I am drawn to the potential of using data to solve real-world problems and make a positive impact in fields such as healthcare,
@@ -127,7 +158,12 @@
        
       </div>
     </v-container>
+   <div class="pb-15">
+    
+   </div>
   </div>
+ 
+ 
 </template>
 <script>
 import About from "../components/About.vue";
@@ -140,11 +176,26 @@ export default {
   data() {
     return {
       icons: [
-        "mdi-facebook",
-        "mdi-twitter",
-        "mdi-linkedin",
-        "mdi-instagram",
-        "mdi-github",
+        {
+          icon: "mdi-facebook",
+          link: "https://www.facebook.com/profile.php?id=100072606405818",
+        },
+        {
+          icon: "mdi-twitter",
+          link: "https://twitter.com/_Isaac_ike1",
+        },
+        {
+          icon: "mdi-linkedin",
+          link: "https://www.linkedin.com/in/isaac-mhlanga-31ba62217",
+        },
+        {
+          icon: "mdi-instagram",
+          link: "https://www.instagram.com/_isac_i",
+        },
+        {
+          icon: "mdi-github",
+          link: "https://github.com/Ike91",
+        }
       ],
     };
 
@@ -155,64 +206,63 @@ export default {
 .name-header h1, h5
 {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #6c6c69;
+  color: white;
 }
 .icon-color .v-btn
 {
-  background-color: #fe57c0 !important;
+  background-color: transparent !important;
+  color: white !important;
   border: 1px solid #fe4b57;
-  color: #fedfa5 !important;
 }
 .icon-color .v-btn:hover
 {
-  background-color: #fedfa5 !important;
+  background-color: white !important;
   border: 1px solid #fe4b57;
-  color: #fe57c0 !important;
+  color: #fe4b57 !important;
+}
+.icon-color a {
+  text-decoration: none !important;
 }
 .v-card {
-  background: #fe4b57;
+  background: #35394e;
   margin-bottom: 1rem;
   border-radius: 10px;
   padding-top: 15px;
-  color: black !important;
+ color: white;
 }
 .skill-header {
   color: #6c6c69 !important;
   margin-bottom: 1rem !important;
 }
 
-.conatiner {
-  margin-top: 1rem;
-  padding-bottom: 5px !important;
-  margin-bottom: 4rem;
- 
-}
 .skill-container
 {
-   
   background-color: #d9d9e0;
-  padding-bottom: 5rem ;
-  
+   
 }
 .work-experience
 {
   margin-top: 2rem;
-  background-color: #f0f0f5;
+  background-color: #2d3047;
+  color: white;
   border-top-left-radius: 50%;
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%;
   border-top-right-radius: 50%;
-  border: 1px solid #fe57c0;
-  box-shadow: 11px 9px 17px 5px rgba(254,87,192,0.73);
--webkit-box-shadow: 11px 9px 17px 5px rgba(254,87,192,0.73);
--moz-box-shadow: 11px 9px 17px 5px rgba(254,87,192,0.73);
+  border: 1px solid #2d3047;
+  box-shadow: 11px 9px 17px 5px #202236;
+ -webkit-box-shadow: 11px 9px 17px 5px #888ba5;
+-moz-box-shadow: 11px 9px 17px 5px #202236;
+margin-bottom: 8rem;
 }
+
 .v-container
 {
-  background-color: #f0f0f5;
+  background-color: #2d3047;
   margin-top: 5rem;
   border-radius: 10px;
-  margin-bottom: 6em;
+  margin-bottom: 2em;
+  color: white;
 }
 
 .skills
@@ -224,12 +274,13 @@ export default {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 .v-btn {
-  background: #fe4b57 !important;
+  background: #ff4a57 !important;
   color: white !important;
+ 
  
 }
 .v-btn:hover {
-  background: #fe57c0 !important;
+  background: #888ba5 !important;
   color: white !important;
 }
 
@@ -241,14 +292,13 @@ export default {
 }
 .v-card:hover
 {
-  background: #fe57c0 !important;
+  background: #202236 !important;
   cursor: pointer;
-  color: white;
+  color: white !important;
 }
 .card {
   display: flex;
   flex-direction: column;
-  background: #d9d9e0;
 }
 
 .card-image {
@@ -265,7 +315,10 @@ export default {
 img {
   width: 100%;
   height: auto;
+  opacity: .7;
+  
 }
+
 
 .hidden-sm-and-down {
   display: none;
@@ -279,10 +332,27 @@ img {
 .hidden-md-and-up {
   display: block;
 }
+
+
 @media (min-width: 960px) {
   .hidden-md-and-up {
     display: none;
   }
+}
+@media only screen and (max-width: 1200px) {
+  .work-experience
+  {
+    border: none !important;
+    box-shadow: none !important;
+    margin-top: -1.5rem;
+  }
+  .about-content
+  {
+    margin-left: 0 !important;
+    
+  }
+
+
 }
 
 

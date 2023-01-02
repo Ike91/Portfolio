@@ -205,14 +205,21 @@ export default {
 }
 .summary {
   padding-bottom: 2em;
+  color: white;
 }
 .skills-container {
   font-size: 14px;
   font-style: inherit;
 }
+.skills-container
+{
+  background: #35394e;
+  padding: 2rem !important;
+  border-radius: 10px;
+}
 
 .skills-container .v-card {
-  background: rgb(219, 210, 210);
+  background: #35394e;
   border-radius: 8px;
   color: rgb(77, 76, 76);
   width: 100% !important;
@@ -224,7 +231,7 @@ export default {
 
 .skills-header {
   text-align: center;
-  color: rgb(77, 76, 76);
+  color: white;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   padding: 1rem;
   position: relative;
@@ -232,6 +239,9 @@ export default {
 .education {
   margin-bottom: 5em;
   margin-top: 3em;
+  background: #35394e;
+  padding: 2rem !important;
+  border-radius: 10px;
 }
 .skills-header:after {
   content: "";

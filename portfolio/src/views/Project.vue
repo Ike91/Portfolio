@@ -36,9 +36,12 @@
               </p>
             </v-card-text>
             <v-card-actions>
+
+              <a  href="https://github.com/Ike91/Portfolio.git" target="_blank">
               <v-btn  class="ml-2 pl-1 text-caption">
                 <span><v-icon class="mr-1">mdi-github</v-icon>See Project</span>
               </v-btn>
+            </a>
             </v-card-actions>
           </v-card>
           <section class="testimonial text-center">
@@ -95,7 +98,7 @@ export default {
 }
 .project-header {
   text-align: center;
-  color: rgb(77, 76, 76);
+  color: white;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   padding: 1rem;
   position: relative;
@@ -103,6 +106,7 @@ export default {
 }
 .project-section {
   padding-top: 10px;
+  color: white;
 }
 .project-header:after {
   content: "";
@@ -125,6 +129,10 @@ export default {
   background-color: #fe4b57 !important;
   
 }
+a 
+{
+  text-decoration: none;
+}
 .v-card-actions 
 {
   margin-top: -1em;
@@ -137,7 +145,8 @@ export default {
 }
 .v-card 
 {
-  background: rgb(219, 210, 210);
+  background: #35394e;
+  color: white;
 }
 .v-icon {
   color: white !important;

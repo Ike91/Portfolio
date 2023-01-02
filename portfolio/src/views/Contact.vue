@@ -82,22 +82,26 @@ export default {
 .contact-section {
   margin-bottom: 8em;
   padding-top: 20px;
+  color: white;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .contact-container {
-  border: 1px solid rgb(216, 215, 215);
+  
   border-radius: 8px;
   margin-top: 2.5em;
-  background: rgb(219, 210, 210);
+  background: #35394e;
   padding-top: 2.5em;
   padding-left: 15px;
   padding-right: 25px;
   padding-bottom: 2em;
+  color: white;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .contact-header {
   text-align: center;
-  color: rgb(77, 76, 76);
+  color: white;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   padding: 1rem;
   position: relative;
