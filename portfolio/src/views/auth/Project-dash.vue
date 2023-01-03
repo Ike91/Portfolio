@@ -1,7 +1,10 @@
 <template>
   <v-container>
     <NavDash />
-    <pForm />
+  
+    <div class="container">
+      <pForm />
+
   
         <v-card
         v-for="project in projects"
@@ -12,7 +15,7 @@
           <v-card-text>
             <v-divider></v-divider>
             <p>
-              {{ project.discription }}
+              {{ project.discription }} 
             </p>
           </v-card-text>
           <v-card-actions>
@@ -36,7 +39,7 @@
               <v-btn 
               class="bg-danger text-caption"  
               prepend-icon="mdi-delete" 
-              :loading = 'isDeleting'
+              :loading ='isDeleting'
               @click="deleteProject">
               Delete
             </v-btn>
@@ -46,13 +49,13 @@
           </v-card>
         </v-dialog>
 
-
+      </div>
   </v-container>
 </template>
 <script>
 import NavDash from "../../components/NavDash.vue";
-import { firestore, projects } from "../../Firebase/firebase";
-import { deleteDoc, doc} from "firebase/firestore";
+import { firestore, projects, ref, storage } from "../../Firebase/firebase";
+import { deleteObject } from "firebase/storage";
 import pForm from "../../components/pForm.vue";
 export default {
   components: {
@@ -68,7 +71,8 @@ export default {
       isDeleting: false,
       deleteDialog: false,
       pid: '',
-      pname: '',     
+      pname: '', 
+      image: '',  
     };
   },
   mounted() {
@@ -99,10 +103,20 @@ export default {
       try {
 
         this.isDeleting = true,
-        alert(this.pid)
+      
         await projects.doc(this.pid).delete()
-       
-        alert('Project Deleted')
+
+        //Now you need to delete an image from the storage
+        const imageRef = ref(storage, `projects/` );
+
+      
+
+        deleteObject(imageRef).then(() => {
+    
+        }).catch((error) => {
+        // Uh-oh, an error occurred!
+        });
+
         //remove the project from the array
         this.projects.splice(this.projects.findIndex(x => x.id == this.pid), 1)
 

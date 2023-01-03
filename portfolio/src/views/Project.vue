@@ -4,7 +4,7 @@
       <div class="project-header">
         <h1>Projects</h1>
       </div>
-      <div class="container" justify="center">
+      <div class="container top-discription" justify="center">
         <p>
           As a dedicated programmer, I am constantly striving to improve my skills and expand my knowledge of new programming languages. To demonstrate my abilities, 
           I have developed a number of projects that are available for viewing on my GitHub profile. 
@@ -19,28 +19,21 @@
      
       <v-row justify-center>
         <v-col>
-          <v-card>
+          <v-card elevation="9" v-for="project in projects" :key="project.name">
             <v-card-text>
-             <v-img src="/portfolio.png"></v-img>
+             <v-img  v-bind:src="imageUrl"></v-img>
             </v-card-text>
-            <v-card-title>Portfolio</v-card-title>
+            <v-card-title>{{ project.name }}</v-card-title>
            
             <v-card-text>
               <v-divider></v-divider>
               <p>
-                I am excited to share with you the portfolio site that I developed using vue.js, vuetify, and vuex. 
-                Building this project was a fantastic learning experience, 
-                and I enjoyed the process of bringing it to life using these powerful tools. 
-                Vue.js is a progressive JavaScript framework that allows for the creation of user interfaces, 
-                and vuetify is a component library that provides a wide range of beautifully designed UI elements. 
-                I also utilized vuex as my state manager, which helped me to manage the data flow within my application and make it more efficient. 
-                If you're interested in seeing the code for this project, you can find it on my GitHub profile. 
-                I hope you enjoy exploring my portfolio site and learning more about my skills and experience."
+                {{ project.discription }}
               </p>
             </v-card-text>
             <v-card-actions>
 
-              <a  href="https://github.com/Ike91/Portfolio.git" target="_blank">
+              <a  v-bind:href="projectLink"  target="_blank">
               <v-btn  class="ml-2 pl-1 text-caption">
                 <span><v-icon class="mr-1">mdi-github</v-icon>See Project</span>
               </v-btn>
@@ -82,21 +75,51 @@
   </v-container>
 </template>
 <script>
+import { firestore, storage, getDownloadURL, ref, } from "../Firebase/firebase";
 export default {
   data() {
     return {
-      projects: [
-        
-      ],
+      projects: [],
+      projectLink: '',
+      imageUrl: '',
+      image: '',
     };
   },
+  mounted() {
+    this.getData();
+  },
+  methods: {
+    //Get the projects from the database
+    async getData() {
+      firestore
+        .collection("projects")
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            this.projects.push(doc.data());
+            this.projectLink = doc.data().link;
+            this.image = doc.data().image;
+            getDownloadURL(ref(storage, `projects/` +this.image))
+              .then((url) => {
+                 this.imageUrl = url;
+                  }).catch((error) => {
+    
+                  });
+          });
+        });
+    },
+  }
 };
 </script>
 <style scoped>
 
 .container {
   margin-bottom: 2em;
-  text-align: center !important;
+  
+}
+.top-discription p
+{
+  text-align: center;
 }
 .project-header {
   text-align: center;
@@ -176,9 +199,6 @@ a
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   margin-top: 1em;
 }
-
-
-
 
  .testimonial {
   margin-top: 1rem;

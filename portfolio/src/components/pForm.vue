@@ -21,6 +21,7 @@
               <v-form ref="pForm">
                 <v-text-field
                 v-model="name"
+                :rules="nameRules"
                 label="Name"
                 prepend-icon="mdi-account"
                 >
@@ -29,20 +30,28 @@
     
                 <v-textarea
                 v-model="discription"
+                :rules="discriptionRules"
                 label="Discription"
                 prepend-icon="mdi-pencil"
+                required
                 >
     
                 </v-textarea>
     
                 <v-text-field
                 v-model="link"
+                :rules="linkRules"
                 label="Link"
                 prepend-icon="mdi-github"
+                required
                 >
     
                 </v-text-field>
-    
+
+                <label class="btn btn-default btn-file">
+                  <span><V-icon class="pr-10" color="white">mdi-paperclip</V-icon></span> <input  type="file" id="file-input">
+                </label>
+            
                 <v-card-actions>
                   <v-btn 
                      class="text-caption ml-8 bg-primary" 
@@ -72,11 +81,10 @@
    </v-layout>
 </template>
 <script>
-import { auth, projects } from '../Firebase/firebase'
+import { projects, storage, ref, uploadBytes} from '../Firebase/firebase'
+import { deleteObject } from "firebase/storage";
 export default {
-
-  name: 'pForm',
-
+   name: 'pForm',
    props: ['project', 'index'],
 
    data(){
@@ -87,12 +95,25 @@ export default {
       name: '',
       discription: '',
       link: '', 
+      image: '',
       projects: [],
+
+      nameRules: [
+          (v) => !!v || "Email is required",
+        ],
+  
+      discriptionRules: [
+          (v) => !!v || "This field is required",
+        ],
+
+      linkRules: [
+          (v) => !!v || "Link is required required",
+        ],
         
     }
    },
 
-methods: {
+   methods: {
 
    //reset the form 
    resetForm() {
@@ -103,10 +124,16 @@ methods: {
    async saveProject() {
       this.isSaving = true;
 
+      //upload file
+      const fileInput = document.getElementById('file-input');
+      let file = fileInput.files[0];
+      const mountainsRef = ref(storage, 'projects/' + file.name);
+   
       let data = {
         name: this.name,
         discription: this.discription,
         link: this.link,
+        image: file.name,
        
       };
 
@@ -118,29 +145,67 @@ methods: {
         })
       });
 
-      this.isSaving = false;
-
+      uploadBytes(mountainsRef, file).then((snapshot) => {
+        this.isSaving = false;
       //reset the form
       this.resetForm();
       //close the dialog
       this.dialog = false;
+      });
+
+     
     },
+
 
     //update project
     async updateProject(id) {
       this.isUpdating = true;
 
-      let data = {
-        id: auth.currentUser.uid,
+     
+      //Get the image and delete it, then insert the new image, only if the names are different
+      const imageRef = ref(storage, `projects/` +this.image);
+      const fileInput = document.getElementById('file-input');
+      let file = fileInput.files[0];
+      const mountainsRef = ref(storage, 'projects/' + file.name);
+
+      if(this.image !== file.name) {
+      deleteObject(imageRef).then(() => {
+    
+      }).catch((error) => {
+      // Uh-oh, an error occurred!
+      });
+
+        let data = {
         name: this.name,
         discription: this.discription,
         link: this.link,
-       
+        image: file.name
+      }
+
+       //save data on firestore
+       const docRef = projects.doc(id);
+       await docRef.update(data);
+
+      uploadBytes(mountainsRef, file).then((snapshot) => {
+        this.isUpdating = false;
+
+      //reset the form
+      this.resetForm();
+      //close the dialog
+      this.dialog = false;
+      });
+
+    }else{
+      
+        let data = {
+        name: this.name,
+        discription: this.discription,
+        link: this.link,
       };
 
       //save data on firestore
-      const docRef = projects.doc(id);
-      await docRef.update(data);
+       const docRef = projects.doc(id);
+       await docRef.update(data);
       
       this.isUpdating = false;
 
@@ -148,6 +213,8 @@ methods: {
       this.resetForm();
       //close the dialog
       this.dialog = false;
+      }
+     
     },
 
     //get data.
@@ -169,7 +236,8 @@ methods: {
     {
        this.name = this.project.name,
        this.discription = this.project.discription,
-       this.link = this.project.link
+       this.link = this.project.link,
+       this.image = this.project.image
     }
   }
 }
@@ -178,6 +246,27 @@ methods: {
 .v-card
 {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  background: rgb(219, 210, 210);
+  background: #35394e !important;
+  color: white !important;
+}
+
+
+.container {
+  display: inline-block;
+  width: 100%;
+}
+input[type="file"]
+{
+  border-radius: 5px !important;
+  margin-left: -1rem;
+  border: 1px solid white;
+  padding: 5px;
+  margin-bottom: 1rem;
+ 
+}
+
+.v-btn 
+{
+  width: 110px;
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
 <div class="conatiner">
   <NavDash />
+  <div class="container">
   <div class="skills-section">
     <sForm />
 
@@ -11,12 +12,12 @@
           <div class="skills-title">
             <div class="skills-img">
               <img
-                src="https://cdn.freebiesupply.com/logos/large/2x/html-5-logo-png-transparent.png"
+                src=""
                 alt=""
                 class="skills-icons"
               />
             </div>
-            <h3>HTML 5</h3>
+            <h3>{{ skill.name }}</h3>
           </div>
           <v-card-actions>
             <sForm :skill="skill" :index="skill" />
@@ -39,8 +40,8 @@
           <v-btn 
           class="bg-danger text-caption"  
           prepend-icon="mdi-delete" 
-          :loading = 'isDeleting'
-          @click="deleteProject">
+          :loading="isDeleting"
+          @click="deletesKill()">
           Delete
         </v-btn>
           <v-btn class="bg-secondary text-caption" prepend-icon="mdi-close" @click="deleteDialog= !deleteDialog">Close</v-btn>
@@ -51,6 +52,7 @@
 
 
   </div>
+</div>
 </div>
 </template>
 <script>
@@ -100,23 +102,8 @@ export default {
         .collection("skills")
         .get()
         .then((querySnapshot) => {
-          querySnapshot.forEach(async (doc) => {
-            let img = "";
-            if (doc.data().image) {
-              const starsRef = ref(storage, doc.data().image);
-              getDownloadURL(starsRef).then((url) => {
-                img = url
-              });
-              // img = await storage
-              //   .ref()
-              //   .child(doc.data().image)
-              //   .getDownloadUrl();
-            }
-            this.skills.push({
-              id: doc.id,
-              name: doc.data.name,
-              imgages: img,
-            });
+          querySnapshot.forEach((doc) => {
+            this.skills.push(doc.data());
           });
         });
     },
@@ -129,17 +116,29 @@ export default {
       this.sname = name
     },
 
+
     //DeLATE SKILL
     async deletesKill()
     {
       try {
 
         this.isDeleting = true,
-        await projects.doc(this.pid).delete()
+        
+        //delete skill in the database
+        await skills.doc(this.sid).delete()
+
+        //delete the image on firestore
+         const imageRef = ref(storage, `skills/` );
+
+         //Delete image(still need fixing)
+         deleteObject(imageRef).then(() => {
+    
+        }).catch((error) => {
+        // Uh-oh, an error occurred!
+        });
        
-        alert('skill Deleted')
         //remove the project from the array
-        this.projects.splice(this.projects.findIndex(x => x.id == this.pid), 1)
+        this.skills.splice(this.skills.findIndex(x => x.id == this.sid), 1)
 
         this.sid = null,
         this.sname = null,
@@ -154,8 +153,6 @@ export default {
   },
   mounted() {
     this.getData();
-   
-    
   },
 };
 </script>
@@ -181,6 +178,10 @@ input[type="file"] {
 .v-form {
   padding-top: 2em;
   padding-bottom: 1em;
+}
+.v-card {
+  background: #35394e;
+  color: white;
 }
 
 .v-container {

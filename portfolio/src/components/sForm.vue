@@ -18,6 +18,7 @@
             <v-card-title class="text-center" v-else >Update skill</v-card-title>
             <v-card-text>
               <v-form ref="sForm">
+
                 <v-text-field
                 v-model="name"
                 prepend-icon="mdi-account"
@@ -25,21 +26,19 @@
                 >
                 </v-text-field>
         
-                <v-text-field
-                v-model="image"
-                prepend-icon="mdi-camera"
-                label="skill imaage"
-                >
-        
-                </v-text-field>
-        
+                <label class="btn btn-default btn-file">
+                  <span><V-icon class="pr-10" color="white">mdi-paperclip</V-icon></span> <input  type="file" id="file-input">
+                </label>
+            
+
                 <v-card-actions>
                   <v-btn
-                    class="text-caption bg-primary ml-8"
+                    class="text-caption text-center bg-primary ml-8"
                     prepend-icon="mdi-store"
+                    :loading="isSaving"
                     v-if="!skill"
                     @click="saveSkill()">
-                   save skill
+                    Save
                   </v-btn> 
         
                   <v-btn
@@ -58,7 +57,7 @@
 </v-layout>
 </template>
 <script>
-import { firestore,  storage, ref,  skills, auth,  getDownloadURL } from "../Firebase/firebase";
+import { firestore,  storage, ref,  skills, uploadBytes} from "../Firebase/firebase";
 export default 
 {
 
@@ -66,14 +65,13 @@ export default
    
     data(){
         return {
-        isSaving: false,
-        skillDialog: false,
-        isUpdating: false,
 
-        name: '',
-        image: '',
-
-        skills: [],
+            isSaving: false,
+            skillDialog: false,
+            isUpdating: false,
+            name: '',
+            image: '',
+            skills: [],
         }
     },
     
@@ -86,22 +84,29 @@ export default
 
     //save skill
      async saveSkill(e) {
-      this.saving = true;
-      let file = e.target.files[0];
-      const mountainsRef = ref(storage, file.name);
+      this.isSaving = true;
+      const fileInput = document.getElementById('file-input');
+      let file = fileInput.files[0];
+      const mountainsRef = ref(storage, `skills/` +file.name);
 
       let data = {
-        imageId: auth.currentUser.uid,
-        name: this.title,
-        image: mountainsRef.name,
+        name: this.name,
+        image: file.name,
       };
 
       //save the data on firestore
-      const doc = await skills.add(data);
+      const doc = await skills.add(data).then(function(docRef){
+        
+        docRef.update({
+          id: docRef.id
+        })
+      });
 
       uploadBytes(mountainsRef, file).then((snapshot) => {
-        this.isLoading = false;
-        this.dialog = false;
+        //stop the loader
+        this.isSaving = false;
+        //close the dialog
+        this.skillDialog = false;
       });
     },
 
@@ -109,24 +114,61 @@ export default
     //update skill
     async updateSkill(e) {
       this.isUpdating = true;
-      let file = e.target.files[0];
-      const mountainsRef = ref(storage, file.name);
+     
+      //Get the image and delete it, then insert the new image, only if the names are different
+      const imageRef = ref(storage, `skills/` +this.image);
+      const fileInput = document.getElementById('file-input');
+      let file = fileInput.files[0];
+      const mountainsRef = ref(storage, 'projects/' + file.name);
+
+      //check if the image you have is the same as the one on databse
+      if(this.image !== file.name) {
+        //delete and insert new one
+        deleteObject(imageRef).then(() => {
+    
+        }).catch((error) => {
+        // Uh-oh, an error occurred!
+        });
+
+        let data = {
+        name: this.title,
+        image: mountainsRef.name,
+      };
+
+      //save the data
+      //save the data on firestore
+      const doc = await skills.doc(skill.id).update(data).then(function(docRef){
+        docRef.update({
+          imageId: docref.id
+        });
+      });
+
+
+      }else
+      {
+        //leave it as it is and just update the fileds
+
+
+
+      }
 
       let data = {
-        imageId: auth.currentUser.uid,
         name: this.title,
         image: mountainsRef.name,
       };
 
       //save the data on firestore
-      const doc = await skills.doc(skill.id).update(data);
+      const doc = await skills.doc(skill.id).update(data).then(function(docRef){
+        docRef.update({
+          imageId: docref.id
+        });
+      });
 
       uploadBytes(mountainsRef, file).then((snapshot) => {
         this.isUpdating = false;
-        this.dialog = false;
+        this.skillDialog = !skillDialog;
       });
     },
-
 
     //get skill
     async getSkills() {
@@ -134,23 +176,8 @@ export default
         .collection("skills")
         .get()
         .then((querySnapshot) => {
-          querySnapshot.forEach(async (doc) => {
-            let img = "";
-            if (doc.data().image) {
-              const starsRef = ref(storage, doc.data().image);
-              getDownloadURL(starsRef).then((url) => {
-                img = url
-              });
-              // img = await storage
-              //   .ref()
-              //   .child(doc.data().image)
-              //   .getDownloadUrl();
-            }
-            this.skills.push({
-              id: doc.id,
-              name: doc.data.name,
-              imgages: img,
-            });
+          querySnapshot.forEach((doc) => {
+            this.skills.push(doc.data());
           });
         });
     },
@@ -158,6 +185,11 @@ export default
 
   mounted() {
     this.getSkills(); 
+    if(this.skill)
+    {
+      this.name = this.skill.name,
+      this.image = this.skill.image
+    }
   }
 }
 
@@ -166,10 +198,25 @@ export default
 .v-card
 {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  background: rgb(219, 210, 210);
+  background: #35394e;
+  color: white;
 }
 .customBtn .v-btn
 {
   width: 80px;
 }
+input[type="file"]
+{
+  border-radius: 5px !important;
+  margin-left: -1rem;
+  border: 1px solid white;
+  padding: 5px;
+  margin-bottom: 1rem;
+ 
+}
+.v-btn
+{
+  width: 100px;
+}
+
 </style>
