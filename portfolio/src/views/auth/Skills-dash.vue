@@ -5,9 +5,9 @@
   <div class="skills-section">
     <sForm />
 
+   
     <div class="skills-container">
-
-      <v-card elevation="9" v-for="skill in skills" :key="skill.name">
+      <v-card elevation="9" class="ml-3" v-for="skill in skills" :key="skill.name">
         <div class="skills-box">
           <div class="skills-title">
             <div class="skills-img">
@@ -28,8 +28,8 @@
           </v-card-actions>
         </div>
       </v-card>
+      </div>
 
-    </div>
     <v-dialog  persistent v-model="deleteDialog" width="400">
       <v-card>
         <v-card-title>Delete Project</v-card-title>
@@ -59,7 +59,7 @@
 import NavDash from "../../components/NavDash.vue";
 import sForm from '../../components/sForm.vue'
 import { firestore,  storage, ref,  skills, auth,  getDownloadURL } from "../../Firebase/firebase";
-import { uploadBytes } from "firebase/storage"; 
+import { uploadBytes, deleteObject } from "firebase/storage"; 
  
 export default {
   components: {
@@ -117,7 +117,7 @@ export default {
     },
 
 
-    //DeLATE SKILL
+    //Delete SKILL
     async deletesKill()
     {
       try {
@@ -208,7 +208,6 @@ input[type="file"] {
   grid-template-columns: repeat(5, 1fr);
   justify-content: center;
   grid-gap: 1rem;
-  padding: 5px 30px;
   font-size: 1.2rem;
 }
 .skills-box {

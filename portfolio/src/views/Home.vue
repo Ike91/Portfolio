@@ -1,49 +1,8 @@
 <template>
   <div class="container">
+  
     <About/>
-    <v-cantainer>
-      <v-row class="work-experience" elvation="9"> 
-        <v-col cols="12" md="6" lg="4" xl="3">
-              <img src="/profile-pic (1).png" alt="Card image" />
-        </v-col>
-        <v-col class="about-content ml-15" cols="12" md="12" lg="6" xl="6">
-          <div class="text-center name-header pt-3">
-            <h1>Isaac Ike Mhlanga</h1>
-            <h5>Software developer</h5>
-        <div class="pt-1">
-          <span style="color: #fe4b57">
-            <v-icon class="mx-0">mdi-phone</v-icon>
-            +27 671004050
-          </span>
-          <span style="color: #fe4b57">
-            <v-icon class="mx-1">mdi-email</v-icon>
-           isaac.mhlanga13@gmail.com
-          </span>
-         
-        </div>
-        </div>
-         <p class="pt-2 text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-            Suscipit ut consequatur dignissimos rem maiores repellat placeat ex reiciendis quia,
-            accusamus soluta quo autem quisquam repudiandae voluptates tempora. Qui quas eum et illum,
-            pariatur fugit aliquid nostrum minima distinctio! Eius necessitatibus, iure, nostrum voluptatem
-            voluptatum dolores unde architecto, cupiditate culpa ab corrupti neque dicta. Blanditiis sequi 
-         </p>
-            <div class="text-center icon-color pb-3">
-              <a  v-for="icon in icons" :key="icon.icon" :href="icon.link" target="_blank">
-              <v-btn
-              color="grey"
-              class="mx-2 btn-radius"
-              :icon="icon.icon"
-              size="small"
-            ></v-btn>
-              </a>
-              <br>
-              <v-btn class="mt-3" to="wwww.resume" target="_blank" style="border-radius: 20px"> resume </v-btn>
-            </div>
-           
-        </v-col>
-      </v-row>
-    </v-cantainer>
+   
     <v-container class="skill-container" app>
       <div class="skill-header">
         <span><h3><v-icon style="color: #ff4a57 !important;">mdi-lightbulb-on</v-icon> <span class="skills-adjust"></span></h3></span>
@@ -169,7 +128,7 @@
  
 </template>
 <script>
-import About from "../components/About.vue";
+import About from "../components/About.vue"
 
 export default {
   componets: {
@@ -273,14 +232,10 @@ margin-bottom: 8rem;
   padding-bottom: 10px;
   margin-bottom: 1em;
 }
-.v-layout p {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-}
+
 .v-btn {
   background: #ff4a57 !important;
   color: white !important;
- 
- 
 }
 
 

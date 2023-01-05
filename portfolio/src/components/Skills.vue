@@ -25,141 +25,12 @@
             <div class="skills-title">
               <div class="skills-img">
                 <img
-                  src="https://cdn.freebiesupply.com/logos/large/2x/html-5-logo-png-transparent.png"
+                  src=""
                   alt=""
                   class="skills-icons"
                 />
               </div>
               <h3>HTML 5</h3>
-            </div>
-          </div>
-        </v-card>
-
-        <v-card elevation="9">
-          <div class="skills-box">
-            <div class="skills-title">
-              <div class="skills-img">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/3/3d/CSS.3.svg"
-                  alt=""
-                  class="skills-icons"
-                />
-              </div>
-              <h3>CSS3</h3>
-            </div>
-          </div>
-        </v-card>
-
-        <v-card elevation="9">
-          <div class="skills-box">
-            <div class="skills-title">
-              <div class="skills-img">
-                <img src="-" alt="" class="skills-icons" />
-              </div>
-              <h3>JAVASCRIPT</h3>
-            </div>
-          </div>
-        </v-card>
-        <v-card elevation="9">
-          <div class="skills-box">
-            <div class="skills-title">
-              <div class="skills-img">
-                <img
-                  src="http://pluspng.com/img-png/nodejs-logo-png-nice-images-collection-node-js-desktop-wallpapers-370.png"
-                  alt=""
-                  class="skills-icons"
-                />
-              </div>
-              <h3 class="text-white">NODE.JS</h3>
-            </div>
-          </div>
-        </v-card>
-
-        <v-card elevation="9">
-          <div class="skills-box">
-            <div class="skills-title">
-              <div class="skills-img">
-                <img
-                  src="https://mildaintrainings.com/wp-content/uploads/2017/11/react-logo.png"
-                  alt=""
-                  class="skills-icons"
-                />
-              </div>
-              <h3>REACT</h3>
-            </div>
-          </div>
-        </v-card>
-
-        <v-card elevation="9">
-          <div class="skills-box">
-            <div class="skills-title">
-              <div class="skills-img">
-                <img
-                  src="https://vuejs.org/images/logo.png"
-                  alt=""
-                  class="skills-icons"
-                />
-              </div>
-              <h3>Vue.js</h3>
-            </div>
-          </div>
-        </v-card>
-
-        <v-card elevation="9">
-          <div class="skills-box">
-            <div class="skills-title">
-              <div class="skills-img">
-                <img
-                  src="https://2.bp.blogspot.com/-bGTsFydT5d8/WM-Gs0K0FTI/AAAAAAAAFpM/AGJ-DWijk785bQjk9FF99PpcySIrtWHIgCPcB/s1600/laravel_logo.png"
-                  alt=""
-                  class="skills-icons"
-                />
-              </div>
-              <h3>Laravel</h3>
-            </div>
-          </div>
-        </v-card>
-
-        <v-card elevation="9">
-          <div class="skills-box">
-            <div class="skills-title">
-              <div class="skills-img">
-                <img
-                  src="https://e7.pngegg.com/pngimages/458/566/png-clipart-web-development-php-computer-icons-ios-logo-blue-text.png"
-                  alt=""
-                  class="skills-icons"
-                />
-              </div>
-              <h3>PHP</h3>
-            </div>
-          </div>
-        </v-card>
-
-        <v-card elevation="9">
-          <div class="skills-box">
-            <div class="skills-title">
-              <div class="skills-img">
-                <img
-                  src="https://javascriptforwp.com/wp-content/uploads/2019/03/badge-gatsby.png"
-                  alt=""
-                  class="skills-icons"
-                />
-              </div>
-              <h3>GATSBY.JS</h3>
-            </div>
-          </div>
-        </v-card>
-        <v-card elevation="9">
-          <div class="skills-box">
-            <div class="skills-title">
-              <div class="skills-img">
-                <img
-                  src="https://javascriptforwp.com/wp-content/uploads/2019/03/badge-gatsby.png"
-                  alt=""
-                  class="skills-icons"
-                />
-              </div>
-              <h3>GATSBY.JS</h3>
             </div>
           </div>
         </v-card>
@@ -169,6 +40,15 @@
     </div>
 
     <div class="education">
+      <div class="text-center">
+        <v-rating
+          v-model="rating"
+          icon-label="custom icon label text {0} of {1}"
+          color="#ff4a57"
+        ></v-rating>
+        
+      </div>
+      <hr style="color: grey;">
       <div class="row" style="margin-top: 1em">
         <div class="col-sm-12 col-md-4">
           <div class="bar front expert" data-skill="HTML5"></div>
@@ -195,7 +75,11 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      imageUrl: [],
+      skills: [],
+      rating: 3,
+    };
   },
 };
 </script>

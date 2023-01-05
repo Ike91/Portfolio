@@ -35,4 +35,7 @@ export default {
 .v-main {
   background: #1f2235 !important;
 }
+.container{
+  background: #1f2235 !important;
+}
 </style>

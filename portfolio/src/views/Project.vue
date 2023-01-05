@@ -5,14 +5,16 @@
         <h1>Projects</h1>
       </div>
       <div class="container top-discription" justify="center">
-        <p>
-          As a dedicated programmer, I am constantly striving to improve my skills and expand my knowledge of new programming languages. To demonstrate my abilities, 
-          I have developed a number of projects that are available for viewing on my GitHub profile. 
-          Some of these projects have also been deployed live on the web, giving me hands-on experience with coding conventions, 
-          debugging, and the importance of good software engineering practices. 
-          I am passionate about using my skills to create functional and innovative projects, 
-          and I welcome the opportunity to collaborate and learn from others.
-        </p>
+       
+            <p>
+              As a dedicated programmer, I am constantly striving to improve my skills and expand my knowledge of new programming languages. To demonstrate my abilities, 
+              I have developed a number of projects that are available for viewing on my GitHub profile. 
+              Some of these projects have also been deployed live on the web, giving me hands-on experience with coding conventions, 
+              debugging, and the importance of good software engineering practices. 
+              I am passionate about using my skills to create functional and innovative projects, 
+              and I welcome the opportunity to collaborate and learn from others.
+            </p>
+         
       </div>
       <div class="container">
 
@@ -128,6 +130,11 @@ export default {
   padding: 1rem;
   position: relative;
   margin-bottom: 2em;
+}
+.custom-card
+{
+  background: transparent !important;
+  padding-top: 10px;
 }
 .project-section {
   padding-top: 10px;

@@ -75,13 +75,13 @@ const routes = [
     component: () => import('../views/auth/Dashboard.vue')
   },
   {
-    path: '/about',
-    name: 'about',
+    path: '/profile',
+    name: 'profile',
     meta: {
       hidenavbar: true,
       auth: true,
     },
-    component: () => import('../views/auth/About.vue')
+    component: () => import('../views/auth/Profile-dash.vue')
   },
   {
     path: '/project-dash',
@@ -101,6 +101,16 @@ const routes = [
     },
 
     component: () => import('../views/auth/Skills-dash.vue')
+  },
+  {
+    path: '/inbox-dash',
+    name: 'inbox-dash',
+    meta: {
+      hidenavbar: true,
+      auth: true,
+    },
+
+    component: () => import('../views/auth/Inbox-dash.vue')
   }
 ]
 

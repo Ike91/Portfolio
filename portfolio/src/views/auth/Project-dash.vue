@@ -4,8 +4,6 @@
   
     <div class="container">
       <pForm />
-
-  
         <v-card
         v-for="project in projects"
         :key="project.name"
@@ -134,9 +132,6 @@ export default {
 };
 </script>
 <style scoped>
-.v-container {
-  margin-top: -1em !important;
-}
 .v-expansion-panel, .v-card {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   color: white;
@@ -163,6 +158,11 @@ export default {
 {
   margin-bottom: 2em;
   background: #35394e;
+}
+@media only screen and (max-width: 600px) {
+  .container {
+    margin-top: -3rem !important;
+  }
 }
 
 </style>

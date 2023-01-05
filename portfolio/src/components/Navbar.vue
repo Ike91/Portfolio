@@ -22,7 +22,7 @@
         >
       </v-toolbar-items>
     </v-app-bar>
-    <v-toolbar app class="d-sm-none">
+    <v-toolbar class="d-sm-none">
       <v-app-bar-nav-icon @click="dialog = true" color="#fe4b57" size="25">
       </v-app-bar-nav-icon>
       <v-toolbar-title class="text-white">Isaac Mhlanga</v-toolbar-title>
@@ -34,7 +34,7 @@
         transition="dialog-left-transition"
       >
         <v-card>
-          <v-toolbar>
+          <v-toolbar app>
             <v-toolbar-title class="text-white">Isaac Mhlanga</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn icon @click="dialog = false">
@@ -49,27 +49,13 @@
               :key="index"
               :to="item.path"
               @click="dialog = false"
+             
+             
             >
-             
-            <template v-slot:prepend>
-              <v-icon :icon="item.icon" color="grey"></v-icon>
-            </template>
-            <v-list-item-title v-text="item.text"></v-list-item-title>
-
-
-
-
-              <!-- <v-icon
-                class="mx-2"
-                color="rgb(184, 183, 183)"
-                v-if="item.icon"
-                >{{ item.icon }}</v-icon
-              > -->
-             
-                <!-- <v-list-item-title class="text-white" :title="item.title">{{
-                  item.text
-                }}</v-list-item-title> -->
-             
+             <strong >{{ item.text }}</strong>
+            <template v-slot:prepend class="mobil-nav-icon">
+              <v-icon  :icon="item.icon" ></v-icon>
+            </template>   
             </v-list-item>
           </v-list>
         </v-card>
@@ -121,7 +107,14 @@ export default {
 };
 </script>
 <style scoped>
+.container
+{
+  background-color: #1f2235 !important;
+}
 .v-toolbar {
+  background-color: #1f2235 !important;
+}
+.v-app-bar {
   background-color: #1f2235 !important;
 }
 .v-toolbar-items {
@@ -138,11 +131,27 @@ export default {
   color: grey !important;
   padding-left: -1em !important;
 }
+.v-list-item
+{
+  color: white !important;
+}
+.v-list-item:hover
+{
+  color: #fe4b57 !important;
+}
+.mobil-nav-icon .v-icon:hover
+{
+  color: #fe4b57 !important;
+}
 .v-list {
   background-color: #202236 !important;
   margin-top: -3em;
 }
 .v-card {
-  background: #ccc3c3 !important;
+  background-color: #1f2235 !important;
+}
+.bg-color
+{
+  color: grey !important;
 }
 </style>

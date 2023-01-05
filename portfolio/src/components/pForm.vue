@@ -81,7 +81,7 @@
    </v-layout>
 </template>
 <script>
-import { projects, storage, ref, uploadBytes} from '../Firebase/firebase'
+import { auth, projects, storage, ref, uploadBytes} from '../Firebase/firebase'
 import { deleteObject } from "firebase/storage";
 export default {
    name: 'pForm',

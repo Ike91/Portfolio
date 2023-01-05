@@ -1,8 +1,8 @@
 <template>
-    <v-layout>
+  <div class="container">
       <v-row>
         <v-col>
-          <v-btn class="mb-2 bg-primary ml-8"  @click="skillDialog= !skillDialog" v-if="!skill">
+          <v-btn class="mb-2 bg-primary"  @click="skillDialog= !skillDialog" v-if="!skill">
             <v-icon class="mx-1">mdi-plus-box</v-icon>
             <span class="text-caption text-lowercase">Add Skill</span>
           </v-btn>
@@ -12,6 +12,7 @@
           </v-btn>
         </v-col>
       </v-row>
+
           <v-dialog v-model="skillDialog" width="600">
           <v-card>
             <v-card-title class="text-center" v-if="!skill">Add skill</v-card-title>
@@ -45,7 +46,7 @@
                     class="text-caption bg-primary ml=8"
                     prepend-icon="mdi-update"
                     v-else
-                    @click="updateSkill()"> 
+                    @click="updateSkill(skill.id)"> 
                     update skill
                   </v-btn>
                 </v-card-actions>
@@ -53,11 +54,11 @@
             </v-card-text>
           </v-card>
          </v-dialog>
-       
-</v-layout>
+</div>
 </template>
 <script>
-import { firestore,  storage, ref,  skills, uploadBytes} from "../Firebase/firebase";
+import { firestore,  storage, ref,  skills, uploadBytes } from "../Firebase/firebase";
+import { deleteObject } from "firebase/storage";
 export default 
 {
 
@@ -112,62 +113,65 @@ export default
 
 
     //update skill
-    async updateSkill(e) {
+    async updateSkill(id) {
       this.isUpdating = true;
      
       //Get the image and delete it, then insert the new image, only if the names are different
-      const imageRef = ref(storage, `skills/` +this.image);
+      const imageRef = ref(storage, 'skills/' +this.image);
+
       const fileInput = document.getElementById('file-input');
       let file = fileInput.files[0];
-      const mountainsRef = ref(storage, 'projects/' + file.name);
+
+      //Reference to the new image
+      const mountainsRef = ref(storage, `skills/` +file.name);
 
       //check if the image you have is the same as the one on databse
-      if(this.image !== file.name) {
+      if(this.image !== file.name){
+
         //delete and insert new one
         deleteObject(imageRef).then(() => {
-    
+          console.log("deleted complte")
         }).catch((error) => {
-        // Uh-oh, an error occurred!
+          // Uh-oh, an error occurred!
         });
 
         let data = {
-        name: this.title,
-        image: mountainsRef.name,
+        name: this.name,
+        image: file.name,
       };
 
       //save the data
-      //save the data on firestore
-      const doc = await skills.doc(skill.id).update(data).then(function(docRef){
-        docRef.update({
-          imageId: docref.id
-        });
+      const docRef = skills.doc(id);
+       await docRef.update(data);
+
+      //upload the new image
+      uploadBytes(mountainsRef, file).then((snapshot) => {
+        //stop the loader
+        this.isSaving = false;
+        //close the dialog
+        this.skillDialog = false;
       });
-
-
+      
       }else
       {
         //leave it as it is and just update the fileds
+        console.log('pictures are the same update the fields')
 
+        let data = {
+        name: this.name,
+        image: file.name,
+      };
 
+      const docRef = skills.doc(id);
+       await docRef.update(data).then((snapshot) => {
+         //stop the loader
+         this.isSaving = false;
+         //close the dialog
+         this.skillDialog = false;
+       });
 
       }
 
-      let data = {
-        name: this.title,
-        image: mountainsRef.name,
-      };
-
-      //save the data on firestore
-      const doc = await skills.doc(skill.id).update(data).then(function(docRef){
-        docRef.update({
-          imageId: docref.id
-        });
-      });
-
-      uploadBytes(mountainsRef, file).then((snapshot) => {
-        this.isUpdating = false;
-        this.skillDialog = !skillDialog;
-      });
     },
 
     //get skill
@@ -195,6 +199,7 @@ export default
 
 </script>
 <style scoped>
+
 .v-card
 {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -217,6 +222,16 @@ input[type="file"]
 .v-btn
 {
   width: 100px;
+}
+@media only screen and (max-width: 600px) {
+  .container {
+   margin-top: 1px !important;
+  }
+  .adskill-btn
+  {
+    margin-right: 5px !important;
+  }
+
 }
 
 </style>
