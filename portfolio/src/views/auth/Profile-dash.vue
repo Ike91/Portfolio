@@ -1,17 +1,17 @@
 <template>
   <v-container>
     <NavDash/>
-    <About/>
+    <Profile/>
   </v-container>
 </template>
 <script>
 import NavDash from "../../components/NavDash.vue";
-import About from "../../components/About.vue";
+import Profile from "../../components/Profile.vue";
 export default{
   components:
   {
     NavDash,
-    About,
+    Profile,
   }
 }
 </script>

@@ -87,4 +87,8 @@ export default {
   color: grey;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+.container
+{
+  margin-top: -5rem;
+}
 </style>

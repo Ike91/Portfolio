@@ -1,8 +1,6 @@
 <template>
   <div class="container">
-  
-    <About/>
-   
+    <Profile/>
     <v-container class="skill-container" app>
       <div class="skill-header">
         <span><h3><v-icon style="color: #ff4a57 !important;">mdi-lightbulb-on</v-icon> <span class="skills-adjust"></span></h3></span>
@@ -26,17 +24,16 @@
             <v-card-text>
               <p>Experience working with HTML5</p>
               <p>Experience working with CSS3</p>
-              <p>Experience working with Javascript</p>
-              
+             
             </v-card-text>
           </v-card>
         </v-col>
         <v-col cols="12" md="6" lg="4" xl="4">
           <v-card elevation="9">
             <V-card-text>
-              <p>Experience working with java</p>
-              <p>Experience working with c++</p>
-              <p>Experience working with c#</p>
+              <p>Experience working with Javascript</p>
+              <p>Experience working with C++</p>
+            
              
             </V-card-text>
           </v-card>
@@ -44,8 +41,7 @@
         <v-col cols="12" md="6" lg="4" xl="4">
           <v-card elevation="9">
             <v-card-text>
-              <p>Experience working with laravel</p>
-              <p>Experience working with Vue.js</p>
+              <p>Experience working with Java</p>
               <p>Experience working with PHP</p>
              
             </v-card-text>
@@ -54,9 +50,9 @@
         <v-col cols="12" md="6" lg="4" xl="4">
           <v-card elevation="9">
             <v-card-text>
-              <p>Experience working with laravel</p>
-              <p>Experience working with Vue.js</p>
-              <p>Experience working with PHP</p>
+              <p>Experience working with Laravel</p>
+              <p>Experience working with vue.js</p>
+             
              
             </v-card-text>
           </v-card>
@@ -64,20 +60,18 @@
         <v-col cols="12" md="6" lg="4" xl="4">
           <v-card elevation="9">
             <v-card-text>
-              <p>Experience working with laravel</p>
-              <p>Experience working with Vue.js</p>
-              <p>Experience working with PHP</p>
-            
+              <p>Experience working with git and github</p>
+              <p>Experience working with Spring Boot</p>
+             
             </v-card-text>
           </v-card>
         </v-col>
         <v-col cols="12" md="6" lg="4" xl="4">
           <v-card elevation="9">
             <v-card-text>
-              <p>Experience working with laravel</p>
-              <p>Experience working with Vue.js</p>
-              <p>Experience working with PHP</p>
-              
+              <p>Experience working with Firebase</p>
+              <p>Experience working with REST and SOAP api`s</p>
+             
             </v-card-text>
           </v-card>
         </v-col>
@@ -113,8 +107,8 @@
       <hr style="color: #888ba5 !important" />
       <div>
         <p>
-          As someone who is interested in machine learning and data science, I am drawn to the potential of using data to solve real-world problems and make a positive impact in fields such as healthcare,
-           education, and finance. Additionally, I find the intellectual challenge and curiosity of understanding and working with complex data and algorithms to be very rewarding. I believe that the skills and knowledge I will gain through studying machine learning and data science will not only be personally fulfilling, but also highly valuable in the job market. 
+          As a software developer, I am drawn to the potential of using data to solve real-world problems and make a positive impact in fields such as healthcare,
+          education, and finance. Additionally, I find the intellectual challenge and curiosity of understanding and working with complex data and algorithms to be very rewarding. I believe that the skills and knowledge I will gain through studying machine learning and data science will not only be personally fulfilling, but also highly valuable in the job market. 
           Overall, I am passionate about pursuing a career in these fields and believe that they offer limitless potential for growth and advancement.
         </p>
        
@@ -128,11 +122,11 @@
  
 </template>
 <script>
-import About from "../components/About.vue"
+import Profile from "../components/Profile.vue"
 
 export default {
-  componets: {
-    About,
+  components: {
+    Profile,
   },
 
   data() {

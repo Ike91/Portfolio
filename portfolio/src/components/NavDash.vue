@@ -22,7 +22,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar class="" app>
+    <v-app-bar app>
       <v-app-bar-nav-icon
         color="#fe4b57"
         @click="drawer = !drawer"
@@ -80,10 +80,17 @@ export default {
 .v-app-bar
 {
   background-color: #202236  !important;
+  margin-top: -3.6rem;
 }
 .v-icon
 {
   padding-left: 25px;
+}
+@media only screen and (max-width: 600px) {
+  .v-app-bar {
+    background-color: #1f2235 !important;
+    margin-top: -4rem;
+  }
 }
  
 </style>

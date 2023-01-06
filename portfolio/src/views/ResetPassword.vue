@@ -6,9 +6,13 @@
       <v-snackbar color="success" timeout="4000" v-if="SuccessMessage">
         {{ SuccessMessage }}
       </v-snackbar>
-      <div>
-        <p class="text-center">Enter the email you are registered with below</p>
+      <div class="passordRest-header">
+        <h1>Reset password</h1>
       </div>
+      <div class="password text-white text-center">
+        <p>Enter your email below </p>
+      </div>
+      
       <v-card>
         <v-card-text>
           <form ref="form" @submit.prevent="resetPassword">
@@ -78,26 +82,44 @@ export default {
 };
 </script>
 <style scoped>
-.resetPassword-header {
+.passordRest-header {
   text-align: center;
-  color: rgb(77, 76, 76);
+  color: white;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   padding: 1rem;
   position: relative;
+  margin-bottom: 2em;
+}
+.passordRest-header:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background-color: rgb(143, 142, 142);
+  border-radius: 2px;
 }
 
 .v-btn {
-  background-color: #ccc3c3 !important;
-  color: grey;
+  background: #fe4b57;
   width: 100px;
+  margin-bottom: 1em;
 }
 .v-card {
-  background: rgb(219, 210, 210) !important;
+  background: #35394e;
   padding-right: 15px;
   padding-top: 15px;
   border-radius: 8px;
   margin-top: 2rem;
   margin-bottom: 4rem;
+  color: white;
   
+}
+@media only screen and (max-width: 600px) {
+  .container {
+    margin-top: -4em !important;
+  }
 }
 </style>

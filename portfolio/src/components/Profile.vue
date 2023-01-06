@@ -1,11 +1,10 @@
 <template>
-
     <div class="container">
       <v-row class="work-experience" elvation="9" v-for="isaac in profile" :key="isaac.name"> 
           <v-col cols="12" md="6" lg="4" xl="3">
                 <img src="/profile-pic (1).png" alt="Card image" />
           </v-col>
-          <v-col class="about-content ml-15" cols="12" md="12" lg="7" xl="7">
+          <v-col class="about-content ml-15" cols="12" md="12" lg="6" xl="6">
             <div class="text-center name-header pt-3">
               <h1>{{ isaac.name }}</h1>
               <h5>{{isaac.role}}</h5>
@@ -35,10 +34,14 @@
                 </a>
                 <br>
                 <v-btn class="mt-3 ml-2" style="border-radius: 20px" @click="dialog = !dialog"   v-if="$route.meta.auth"> Update </v-btn>
-                <v-btn class="mt-3 ml-2" style="border-radius: 20px" @click="dialog = !dialog"   v-else> resume </v-btn>
+                <v-btn class="mt-3 ml-2" style="border-radius: 20px" @click="resume = !resume"   v-else> resume </v-btn>
               </div>
           </v-col>
         </v-row>
+        <v-dialog v-model="resume" width="800px">
+          <iframe id="frame" allowtransparency="true" style="background: transparent;" src="./vue.pdf" frameborder="2" scrolling="auto" width="100%" height="900px" ></iframe>
+        </v-dialog>
+       
       
       <v-dialog v-model="dialog" width="600">
        <v-card>
@@ -116,6 +119,8 @@ export default{
 
       dialog: false,
       isSaving: false,
+      resume: false,
+    
 
       name: '',
       role: '',
@@ -220,6 +225,17 @@ mounted()
 }
 </script>
 <style scoped>
+.container
+{
+  margin-top: -4rem !important;
+}
+.iframe iframe
+{
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background: transparent;
+}
 .work-experience
 {
 margin-top: 7rem;
@@ -239,7 +255,7 @@ img {
   width: 100%;
   height: auto;
   opacity: .9;
-  margin-top: 5rem;
+  margin-top: 5.5rem;
   
 }
 .v-btn {
@@ -260,7 +276,11 @@ img {
   {
     border: none !important;
     box-shadow: none !important;
-    margin-top: -1.5rem;
+    border-top-left-radius: none !important;
+    border-bottom-left-radius: none !important;
+    border-bottom-right-radius: none !important;
+    border-top-right-radius: none !important;
+    margin-top: -6rem;
   }
   .about-content
   {

@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <v-app-bar
-      dense
       app
       class="d-none d-sm-flex and-down"
       v-if="$route.meta.hideNavbar"
@@ -22,7 +21,7 @@
         >
       </v-toolbar-items>
     </v-app-bar>
-    <v-toolbar class="d-sm-none">
+    <v-app-bar class="d-sm-none" app>
       <v-app-bar-nav-icon @click="dialog = true" color="#fe4b57" size="25">
       </v-app-bar-nav-icon>
       <v-toolbar-title class="text-white">Isaac Mhlanga</v-toolbar-title>
@@ -49,8 +48,6 @@
               :key="index"
               :to="item.path"
               @click="dialog = false"
-             
-             
             >
              <strong >{{ item.text }}</strong>
             <template v-slot:prepend class="mobil-nav-icon">
@@ -60,7 +57,7 @@
           </v-list>
         </v-card>
       </v-dialog>
-    </v-toolbar>
+    </v-app-bar>
   </div>
 </template>
 <script>
@@ -112,7 +109,7 @@ export default {
   background-color: #1f2235 !important;
 }
 .v-toolbar {
-  background-color: #1f2235 !important;
+  background-color: #1c1e2e !important;
 }
 .v-app-bar {
   background-color: #1f2235 !important;
@@ -153,5 +150,11 @@ export default {
 .bg-color
 {
   color: grey !important;
+}
+@media only screen and (max-width: 600px) {
+  .v-app-bar {
+    background-color: #1f2235 !important;
+    margin-top: -4rem;
+  }
 }
 </style>

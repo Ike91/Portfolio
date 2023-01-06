@@ -19,24 +19,44 @@
           solutions has led to me being able to help improve their understanding and their overall performance.
         </p>
       </div>
-      <div class="skills-container">
-        <v-card elevation="9">
-          <div class="skills-box">
-            <div class="skills-title">
-              <div class="skills-img">
-                <img
-                  src=""
-                  alt=""
-                  class="skills-icons"
-                />
-              </div>
-              <h3>HTML 5</h3>
+
+      <div class="container">
+        <div class="skills-section">
+          <sForm />
+         
+            <div class="skills-container">
+              <v-card elevation="9">
+                <div class="skills-box" >
+                  <div class="skills-title">
+                    <div class="skills-img">
+                      <img 
+                        src=""
+                        alt=""
+                        class="skills-icons"
+                      />
+                    </div>
+                    <br>
+                    <p>
+                      Experience working with                      
+                    </p>
+                    <h3></h3>
+                    
+                  </div>
+                  <v-card-actions>
+                    <sForm :skill="skill" :index="skill" />
+                    <v-btn class=" bg-danger text-white" @click="skillConfirm(skill.id, skill.name)" v-if="$route.meta.auth">
+                      <v-icon>mdi-delete</v-icon>
+                      <span class="text-caption text-lowercase" >Delete Skill</span>
+                    </v-btn>
+                  </v-card-actions>
+                </div>
+              </v-card>
             </div>
-          </div>
-        </v-card>
+      
+         
+        </div>
       </div>
-      <br />
-      <br />
+    
     </div>
 
     <div class="education">
@@ -73,14 +93,18 @@
   </div>
 </template>
 <script>
+
 export default {
+  components: {
+    pForm,
+  },
   data() {
     return {
-      imageUrl: [],
-      skills: [],
+     
       rating: 3,
     };
   },
+ 
 };
 </script>
 <style scoped>

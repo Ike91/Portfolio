@@ -131,6 +131,7 @@ li a
     text-decoration: none !important;
 }
 
+
 @media (min-width: 992px) {
 .inbox-wrapper .email-aside .aside-content {
     padding-right: 10px;

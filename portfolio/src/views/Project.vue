@@ -61,12 +61,7 @@
                         </div>   
                     </div>
                     
-                    <a class="carousel-control-prev" href="#testimonial4" data-slide="prev">
-                        <span class="carousel-control-prev-icon" color="#fe4b57"></span>
-                    </a>
-                    <a class="carousel-control-next" href="#testimonial4" data-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </a>
+                   
                 </div>
             </div>
         </section>
@@ -158,7 +153,7 @@ export default {
 }
 .v-divider 
 {
-  background-color: #fe4b57 !important;
+  background-color: grey !important;
   
 }
 a 
@@ -344,7 +339,7 @@ top: 0;
 left: 0;
 right: 0;
 bottom: 0;
-width: 70%;
+width: 100%;
 margin: auto;
 padding: 20px;
 position: relative;

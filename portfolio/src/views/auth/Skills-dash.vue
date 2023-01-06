@@ -4,35 +4,34 @@
   <div class="container">
   <div class="skills-section">
     <sForm />
-
-   
-    <div class="skills-container">
-      <v-card elevation="9" class="ml-3" v-for="skill in skills" :key="skill.name">
-        <div class="skills-box">
-          <div class="skills-title">
-            <div class="skills-img">
-              <img
-                src=""
-                alt=""
-                class="skills-icons"
-              />
+      <div class="skills-container">
+        <v-card elevation="9" v-for="skill in skills" :key="skill.name">
+          <div class="skills-box">
+            <div class="skills-title">
+              <div class="skills-img">
+                <img
+                  src=""
+                  alt=""
+                  class="skills-icons"
+                />
+              </div>
+              <h3>{{ skill.name }}</h3>
+              
             </div>
-            <h3>{{ skill.name }}</h3>
+            <v-card-actions>
+              <sForm :skill="skill" :index="skill" />
+              <v-btn class=" bg-danger text-white" @click="skillConfirm(skill.id, skill.name)">
+                <v-icon>mdi-delete</v-icon>
+                <span class="text-caption text-lowercase">Delete Skill</span>
+              </v-btn>
+            </v-card-actions>
           </div>
-          <v-card-actions>
-            <sForm :skill="skill" :index="skill" />
-            <v-btn class="mb-2 bg-danger text-white" @click="skillConfirm(skill.id, skill.name)">
-              <v-icon>mdi-delete</v-icon>
-              <span class="text-caption text-lowercase">Delete</span>
-            </v-btn>
-          </v-card-actions>
-        </div>
-      </v-card>
+        </v-card>
       </div>
 
     <v-dialog  persistent v-model="deleteDialog" width="400">
       <v-card>
-        <v-card-title>Delete Project</v-card-title>
+        <v-card-title>Delete Skill</v-card-title>
        
         <v-card-text >Are you sure you want to delete <b>{{ sname }}</b></v-card-text>
         <br>
@@ -162,7 +161,7 @@ export default {
 }
 .v-btn
 {
-  width: 80px;
+  width: 100px;
 }
 .custom-file-upload {
   border-bottom: 1px solid rgb(160, 160, 160);
@@ -188,8 +187,10 @@ input[type="file"] {
   flex-flow: column wrap;
 }
 .skills-container {
-  font-size: 14px;
   font-style: inherit;
+  background: #35394e;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .skills-container .v-card {
