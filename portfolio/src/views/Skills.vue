@@ -88,18 +88,18 @@ export default {
      
       rating: 3,
       skills : [
-        {name: "HTML 5", link: "./skills/html-5-logo-png-transparent.png"},
+        {name: "HTML 5", link: "./skills/html-5.png"},
         {name: "CSS 3", link: "./skills/CSS.3.svg"},
-        {name: "JAVASCRIPT", link: "./skills/javaScript-Logo.png"},
+        {name: "JAVASCRIPT", link: "./skills/javascript.png"},
         {name: "C++", link: "./skills/c++.png"},
         {name: "JAVA", link: "./skills/java.png"},
         {name: "PHP", link: "./skills/php.png"},
         {name: "LARAVEL", link: "./skills/laravel.png"},
         {name: "VUE.JS", link: "./skills/vue.png"},
-        {name: "SPRING BOOT", link: "./skills/spring-boot.png"},
+        {name: "SPRING BOOT", link: "./skills/spring.png"},
         {name: "FIREBASE", link: "./skills/firebase.png"},
-        {name: "GIT & GITHUB", link: "./skills/git.jpg"},
-        {name: "REST + SOAP API", link: "./skills/Rest.png"},
+        {name: "GIT & GITHUB", link: "./skills/git.png"},
+        {name: "REST + SOAP API", link: "./skills/rest.png"},
         
       ]
     };
