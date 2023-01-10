@@ -20,7 +20,6 @@
             <v-form>
               <v-text-field
                 v-model="name"
-                color="white"
                 :error-messages="nameErrors"
                 :counter="10"
                 label="Name"
@@ -29,6 +28,7 @@
               ></v-text-field>
               <v-text-field
                 v-model="email"
+             
                 :error-messages="emailErrors"
                 label="E-mail"
                 required
@@ -38,6 +38,7 @@
 
               <v-text-field
                 v-model="phone"
+                active-class="transparent-bg"
                 :error-messages="emailErrors"
                 label="Phone"
                 required
@@ -48,6 +49,7 @@
 
               <v-textarea
                 v-model="select"
+               
                 :items="items"
                 :error-messages="selectErrors"
                 label="Message"
@@ -84,6 +86,10 @@ export default {
   padding-top: 20px;
   color: white;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.transparent-bg {
+  background-color: #35394e !important;
+  color: black;
 }
 
 .contact-container {
@@ -123,6 +129,10 @@ export default {
   background-color: #fe4b57 !important;
   color: white !important;
   width: 100px;
+}
+.v-text-field:active
+{
+  background-color: transparent;
 }
 
 @media only screen and (max-width: 600px) {

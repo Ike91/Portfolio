@@ -49,8 +49,7 @@ export default {
       links: [
         { icon: "mdi-view-dashboard", text: "Home", route: "/dashboard" },
         { icon: "mdi-account", text: "Profile", route: "/profile" },
-        { icon: "mdi-briefcase", text: "Skills", route: "/skills-dash" },
-        { icon: "mdi-lightbulb-on", text: "Projects", route: "/project-dash" },
+        { icon: "mdi-briefcase", text: "Projects", route: "/project-dash" },
         { icon: "mdi-email", text: "Notifications", route: "/inbox-dash" },
       ],
       items: [

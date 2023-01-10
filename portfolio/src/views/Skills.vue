@@ -8,15 +8,11 @@
       <div class="summary text-center">
         <p>
           I aquired these skills through personal projects and practice, and
-          from online platforms such as code academy, udemy couses, leetCode just to name a few, it was very
+          from online platforms such as code academy, leetCode just to name a few, it was very
           funny learning them. I have taken it upon myself to stay abreast of
           emerging technologies in computer science, and use this knowledge to
           continue to improve upon my own skills and abilities. I have also been
-          able to apply my skills to help CS majors students I have worked with in the
-          past. I have done this by understanding their goals and objectives,
-          and creating solutions to help them move closer to achieving their
-          goals. My ability to think critically and come up with innovative
-          solutions has led to me being able to help improve their understanding and their overall performance.
+          able to apply my skills to help CS majors students.
         </p>
       </div>
 
@@ -74,8 +70,7 @@
           <div class="bar back intermediate" data-skill="LARAVEL"></div>
           <div class="bar back basic" data-skill="FIREBASE"></div>
         </div>
-      </div>
-      
+      </div>  
     </div>
   </div>
 </template>
@@ -104,16 +99,21 @@ export default {
       ]
     };
   },
+
  
 };
 </script>
 <style scoped>
 .v-container {
   flex-flow: column wrap;
+  font-family:'Times New Roman', Times, serif;
 }
 .summary {
   padding-bottom: 2em;
   color: white;
+  font-family:'Times New Roman', Times, serif;
+  font-size: 18px;
+  
 }
 .skills-container {
   font-size: 14px;
@@ -228,6 +228,9 @@ export default {
   justify-content: center;
   align-items: center;
   transition: 0.5s;
+  border: 1px solid #fe4b57;
+  box-shadow: 11px 9px 17px 5px #202236;
+  -moz-box-shadow: 11px 9px 17px 5px #202236;
 }
 
 .skills-img:after {

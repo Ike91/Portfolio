@@ -11,7 +11,7 @@
       tile
       class="indigo lighten-1 white--text text-center"
     >
-      <v-card-text>
+      <v-card-text class="text-center">
         <a  v-for="icon in icons" :key="icon.icon" :href="icon.link" target="_blank">
           <v-btn
           color="grey"

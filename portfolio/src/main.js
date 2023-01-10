@@ -10,6 +10,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { auth } from './Firebase/firebase'
 
 
+
 loadFonts()
 let app
 auth.onAuthStateChanged(() => {

@@ -40,6 +40,11 @@
                 <span><v-icon class="mr-1">mdi-github</v-icon>See Project</span>
               </v-btn>
             </a>
+            <a  v-bind:href="projectLink"  target="_blank">
+              <v-btn  class="ml-2 pl-1 text-caption">
+                <span><v-icon class="mr-1">mdi-web</v-icon>live </span>
+              </v-btn>
+            </a>
             </v-card-actions>
           </v-card>
           <section class="testimonial text-center">
@@ -60,8 +65,6 @@
                             </div>
                         </div>   
                     </div>
-                    
-                   
                 </div>
             </div>
         </section>
@@ -112,11 +115,16 @@ export default {
 
 .container {
   margin-bottom: 2em;
+  font-size: 18px;
   
 }
 .top-discription p
 {
   text-align: center;
+  font-size: 18px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  padding-bottom: 2rem;
+  
 }
 .project-header {
   text-align: center;
@@ -125,6 +133,7 @@ export default {
   padding: 1rem;
   position: relative;
   margin-bottom: 2em;
+  font-size: 18px;
 }
 .custom-card
 {
@@ -174,6 +183,7 @@ a
 {
   background: #35394e;
   color: white;
+  margin-bottom: 1rem;
 }
 .v-icon {
   color: white !important;
@@ -203,11 +213,11 @@ a
 }
 
  .testimonial {
-  margin-top: 1rem;
+  margin-top: 5rem;
   min-height: 375px;
   position: relative;
   padding-top: 10px;
-  padding-bottom: 0px;
+  margin-bottom: -5rem;
   background-position: center;
   background-size: cover;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;

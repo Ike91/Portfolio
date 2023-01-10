@@ -34,6 +34,8 @@ export default {
 <style scoped>
 .v-main {
   background: #1f2235 !important;
+  font-family:'Times New Roman', Times, serif;
+  font-size: 18px;
 }
 .container{
   background: #1f2235 !important;

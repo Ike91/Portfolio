@@ -3,13 +3,13 @@
     <Profile/>
     <v-container class="skill-container" app>
       <div class="skill-header">
-        <span><h3><v-icon style="color: #ff4a57 !important;">mdi-lightbulb-on</v-icon> <span class="skills-adjust"></span></h3></span>
+        <span><h3 style="color: #ff4a57 !important;"><v-icon style="color: #ff4a57 !important;">mdi-lightbulb-on</v-icon> <span class="skills-adjust"></span>Skills</h3></span>
       </div>
         <hr style="color: #6c6c69 !important" />
       <div class="skills">
         <p>
           I am skilled in a variety of technologies, including programming
-          languages such as c#, Java, and C++, as well as web development
+          languages such as Javascript, Java, and C++, as well as web development
           frameworks such as vue and laravel, and database management systems
           such as MySQL. I have experience working with these skills in a
           variety of personal projects, and have a strong understanding of how
@@ -79,7 +79,7 @@
     </v-container>
     <v-container>
       <div class="skill-header">
-        <h3><v-icon style="color: #ff4a57 !important;">mdi-briefcase</v-icon></h3>
+        <h3 style="color: #ff4a57 !important;"><v-icon style="color: #ff4a57 !important;">mdi-briefcase</v-icon> Projects</h3>
       </div>
 
       <hr style="color: #888ba5 !important" />
@@ -88,10 +88,7 @@
           I have gained a strong foundation in various technologies through
           building personal projects and tutoring computer science students at
           different universities. Some of the projects I have worked on include
-          this web application using vue.js framework and firebase as my
-          database, I have also tutored students in topics such as data
-          structures, algorithms, and software engineering, helping them to
-          understand complex concepts. Through these experiences, I have gained
+          this web application using vue.js framework and firebase. Through these experiences, I have gained
           a deep understanding of a wide range of technologies and have
           developed the skills and knowledge necessary to apply them
           effectively.
@@ -101,7 +98,7 @@
     </v-container>
     <v-container>
       <div class="skill-header">
-        <span><h3><v-icon style="color: #ff4a57 !important;">mdi-lightbulb</v-icon> <span class="skills-adjust"></span></h3></span>
+        <span><h3 style="color: #ff4a57 !important;"><v-icon style="color: #ff4a57 !important;">mdi-lightbulb</v-icon> <span class="skills-adjust"></span>Interest</h3></span>
       </div>
 
       <hr style="color: #888ba5 !important" />
@@ -185,6 +182,7 @@ export default {
   border-radius: 10px;
   padding-top: 15px;
  color: white;
+ font-family:'Times New Roman', Times, serif;
 }
 .skill-header {
   color: #6c6c69 !important;
@@ -194,6 +192,7 @@ export default {
 .skill-container
 {
   background-color: #d9d9e0;
+  font-family:'Times New Roman', Times, serif;
    
 }
 .work-experience
@@ -207,9 +206,10 @@ export default {
   border-top-right-radius: 50%;
   border: 1px solid #2d3047;
   box-shadow: 11px 9px 17px 5px #202236;
- -webkit-box-shadow: 11px 9px 17px 5px #888ba5;
--moz-box-shadow: 11px 9px 17px 5px #202236;
-margin-bottom: 8rem;
+  -webkit-box-shadow: 11px 9px 17px 5px #888ba5;
+  -moz-box-shadow: 11px 9px 17px 5px #202236;
+  margin-bottom: 8rem;
+  font-family:'Times New Roman', Times, serif;
 }
 
 .v-container
@@ -219,6 +219,7 @@ margin-bottom: 8rem;
   border-radius: 10px;
   margin-bottom: 2em;
   color: white;
+  font-family:'Times New Roman', Times, serif;
 }
 
 .skills
@@ -238,6 +239,7 @@ margin-bottom: 8rem;
   flex-direction: row;
   width: 100%;
   text-align: center;
+  font-family:'Times New Roman', Times, serif;
 }
 .v-card:hover
 {
@@ -259,6 +261,7 @@ margin-bottom: 8rem;
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
+  font-family:'Times New Roman', Times, serif;
 }
 
 img {
@@ -268,7 +271,6 @@ img {
   margin-top: 2.5rem;
   
 }
-
 
 .hidden-sm-and-down {
   display: none;

@@ -4,9 +4,9 @@
           <v-col cols="12" md="6" lg="4" xl="3">
                 <img src="/profile-pic (1).png" alt="Card image" />
           </v-col>
-          <v-col class="about-content ml-15" cols="12" md="12" lg="6" xl="6">
+          <v-col class="about-content ml-15" cols="12" md="12" lg="8" xl="8">
             <div class="text-center name-header pt-3">
-              <h1>{{ isaac.name }}</h1>
+            <h1 class="text-4xl"> {{ isaac.name }} </h1>
               <h5>{{isaac.role}}</h5>
           <div class="pt-1">
             <span style="color: #fe4b57">
@@ -39,7 +39,7 @@
           </v-col>
         </v-row>
         <v-dialog v-model="resume" width="800px">
-          <iframe id="frame" allowtransparency="true" style="background: transparent;" src="./vue.pdf" frameborder="2" scrolling="auto" width="100%" height="900px" ></iframe>
+          <iframe id="frame" allowtransparency="true" style="background: transparent;" v-bind:src="resumeUrl" frameborder="2" scrolling="auto" width="100%" height="900px" ></iframe>
         </v-dialog>
        
       
@@ -112,7 +112,7 @@
 </template>
 <script>
 
-import { profile, firestore, storage, ref, uploadBytes} from '../Firebase/firebase'
+import { profile, firestore, storage, ref, uploadBytes, getDownloadURL} from '../Firebase/firebase'
 export default{
   data(){
       return{
@@ -128,6 +128,8 @@ export default{
       email: '', 
       about: '', 
       profile: [],
+      resumeFile: '',
+      resumeUrl: '',
 
 
       icons: [
@@ -190,7 +192,7 @@ export default{
     });
 
     uploadBytes(mountainsRef, file).then((snapshot) => {
-      this.isSaving = false;
+    this.isSaving = false;
     //reset the form
     this.resetForm();
     //close the dialog
@@ -206,6 +208,15 @@ export default{
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           this.profile.push(doc.data());
+          this.resumeFile = doc.data().resume;
+          getDownloadURL(ref(storage, `resume/` +this.resumeFile))
+              .then((url) => {
+                 this.resumeUrl = url;
+                 console.log(this.resumeUrl)
+                  }).catch((error) => {
+                   
+                  });
+
         });
       });
   },
@@ -228,6 +239,7 @@ mounted()
 .container
 {
   margin-top: -4rem !important;
+  font-family:'Times New Roman', Times, serif;
 }
 .iframe iframe
 {
@@ -255,7 +267,10 @@ img {
   width: 100%;
   height: auto;
   opacity: .9;
-  margin-top: 5.5rem;
+  margin-top: 10px;
+  margin-left: 2rem;
+  border: 1px solid #fe4b57;
+  border-radius: 100%;
   
 }
 .v-btn {
@@ -285,6 +300,11 @@ img {
   .about-content
   {
     margin-left: 0 !important;
+    
+  }
+  img {
+   
+    margin-left: 0rem;
     
   }
 }

@@ -28,8 +28,6 @@
               <v-card-text>
                 <h4>Perfomance</h4>
                 <v-divider color="grey"></v-divider>
-               
-                
               </v-card-text>
             </v-card>
           </v-col>
@@ -40,13 +38,9 @@
 </template>
 <script>
 import NavDash from "../../components/NavDash.vue";
-import Skills from "../../components/Skills.vue";
-
-
 export default {
   components: {
     NavDash,
-    Skills,
   },
   data() {
     return {
