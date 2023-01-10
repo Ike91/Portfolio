@@ -267,8 +267,8 @@ img {
   width: 100%;
   height: auto;
   opacity: .9;
-  margin-top: 10px;
-  margin-left: 2rem;
+  margin-top: 4.7rem !important;
+  margin-left: 2.5rem;
   border: 1px solid #fe4b57;
   border-radius: 100%;
   

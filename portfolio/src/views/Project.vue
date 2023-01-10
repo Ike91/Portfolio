@@ -23,7 +23,7 @@
         <v-col>
           <v-card elevation="9" v-for="project in projects" :key="project.name">
             <v-card-text>
-             <v-img  v-bind:src="imageUrl"></v-img>
+             <v-img :src="project.imageUrl"></v-img>
             </v-card-text>
             <v-card-title>{{ project.name }}</v-card-title>
            
@@ -35,12 +35,12 @@
             </v-card-text>
             <v-card-actions>
 
-              <a  v-bind:href="projectLink"  target="_blank">
+            <a :href="project.link" target="_blank">
               <v-btn  class="ml-2 pl-1 text-caption">
                 <span><v-icon class="mr-1">mdi-github</v-icon>See Project</span>
               </v-btn>
             </a>
-            <a  v-bind:href="projectLink"  target="_blank">
+            <a :href="project.live" target="_blank">
               <v-btn  class="ml-2 pl-1 text-caption">
                 <span><v-icon class="mr-1">mdi-web</v-icon>live </span>
               </v-btn>
@@ -80,13 +80,14 @@ export default {
   data() {
     return {
       projects: [],
-      projectLink: '',
-      imageUrl: '',
+      newProjects: [],
       image: '',
+      imageUrl: '',
     };
   },
   mounted() {
     this.getData();
+   
   },
   methods: {
     //Get the projects from the database
@@ -97,11 +98,11 @@ export default {
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
             this.projects.push(doc.data());
-            this.projectLink = doc.data().link;
             this.image = doc.data().image;
+            const index = this.projects.findIndex(project => project.image === this.image);
             getDownloadURL(ref(storage, `projects/` +this.image))
               .then((url) => {
-                 this.imageUrl = url;
+                   this.projects[index].imageUrl = url;
                   }).catch((error) => {
     
                   });

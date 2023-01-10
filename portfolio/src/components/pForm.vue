@@ -48,6 +48,16 @@
     
                 </v-text-field>
 
+                <v-text-field
+                v-model="live"
+                :rules="linkRules"
+                label="Link"
+                prepend-icon="mdi-web"
+                required
+                >
+    
+                </v-text-field>
+
                 <label class="btn btn-default btn-file">
                   <span><V-icon class="pr-10" color="white">mdi-paperclip</V-icon></span> <input  type="file" id="file-input">
                 </label>
@@ -81,7 +91,7 @@
    </v-layout>
 </template>
 <script>
-import { auth, projects, storage, ref, uploadBytes} from '../Firebase/firebase'
+import { projects, storage, ref, uploadBytes} from '../Firebase/firebase'
 import { deleteObject } from "firebase/storage";
 export default {
    name: 'pForm',
@@ -95,6 +105,7 @@ export default {
       name: '',
       discription: '',
       link: '', 
+      live: '',
       image: '',
       projects: [],
 
@@ -133,6 +144,7 @@ export default {
         name: this.name,
         discription: this.discription,
         link: this.link,
+        live: this.live,
         image: file.name,
        
       };
@@ -161,7 +173,6 @@ export default {
     async updateProject(id) {
       this.isUpdating = true;
 
-     
       //Get the image and delete it, then insert the new image, only if the names are different
       const imageRef = ref(storage, `projects/` +this.image);
       const fileInput = document.getElementById('file-input');
