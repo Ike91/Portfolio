@@ -119,5 +119,5 @@ router.beforeEach((to, from, next) => {
     next()
   }
 })
-
+router.push('/home');
 export default router
