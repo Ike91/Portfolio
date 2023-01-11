@@ -1,10 +1,7 @@
 <template>
   <div class="container">
     <div class="contact-section">
-      <div class="contact-header">
-        <h1>Contact</h1>
-      </div>
-      <br />
+      <pageHeader v-bind:header-text="header" />
       <v-row justify="center" class="text-center">
         <p>
           If you're interested in working with me, learning programming concepts, or collaborating on projects, 
@@ -69,8 +66,14 @@
   </div>
 </template>
 <script>
+import pageHeader from '../components/pageHeader'
 export default {
+  components:
+  {
+    pageHeader,
+  },
   data: () => ({
+    header: 'Contact',
     errorMessages: [],
     name: null,
     email: null,
@@ -105,25 +108,6 @@ export default {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
-.contact-header {
-  text-align: center;
-  color: white;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  padding: 1rem;
-  position: relative;
-}
-
-.contact-header:after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 4px;
-  background-color: rgb(143, 142, 142);
-  border-radius: 2px;
-}
 .v-btn {
   
   background-color: #fe4b57 !important;

@@ -1,24 +1,11 @@
 <template>
   <v-container>
     <div class="project-section">
-      <div class="project-header">
-        <h1>Projects</h1>
-      </div>
-      <div class="container top-discription" justify="center">
-       
-            <p>
-              As a dedicated programmer, I am constantly striving to improve my skills and expand my knowledge of new programming languages. To demonstrate my abilities, 
-              I have developed a number of projects that are available for viewing on my GitHub profile. 
-              Some of these projects have also been deployed live on the web, giving me hands-on experience with coding conventions, 
-              debugging, and the importance of good software engineering practices. 
-              I am passionate about using my skills to create functional and innovative projects, 
-              and I welcome the opportunity to collaborate and learn from others.
-            </p>
-         
-      </div>
-      <div class="container">
 
-     
+     <pageHeader v-bind:header-text="header" />
+     <headerText v-bind:header-top-text="discription" />
+    
+      <div class="container">
       <v-row justify-center>
         <v-col>
           <v-card elevation="9" v-for="project in projects" :key="project.name">
@@ -76,9 +63,18 @@
 </template>
 <script>
 import { firestore, storage, getDownloadURL, ref, } from "../Firebase/firebase";
+import pageHeader from '../components/pageHeader'
+import headerText from '../components/headerText'
 export default {
+components: {
+    pageHeader,
+    headerText,
+},
+
   data() {
     return {
+      header: 'Projects',
+      discription: 'As a dedicated programmer, I am constantly striving to improve my skills and expand my knowledge of new programming languages. To demonstrate my abilities, I have developed a number of projects that are available for viewing on my GitHub profile. Some of these projects have also been deployed live on the web, giving me hands-on experience with coding conventions, debugging, and the importance of good software engineering practices.I am passionate about using my skills to create functional and innovative projects, and I welcome the opportunity to collaborate and learn from others',
       projects: [],
       newProjects: [],
       image: '',
@@ -127,15 +123,6 @@ export default {
   padding-bottom: 2rem;
   
 }
-.project-header {
-  text-align: center;
-  color: white;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  padding: 1rem;
-  position: relative;
-  margin-bottom: 2em;
-  font-size: 18px;
-}
 .custom-card
 {
   background: transparent !important;
@@ -145,17 +132,7 @@ export default {
   padding-top: 10px;
   color: white;
 }
-.project-header:after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 4px;
-  background-color: rgb(143, 142, 142);
-  border-radius: 2px;
-}
+
 .v-card-title
 {
    margin-bottom: -1em;
