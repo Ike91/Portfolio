@@ -3,8 +3,8 @@
     "rules": "databse.riles.json"
   },
   "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
+    "rules": "firebase.rules",
+    "indexes": "firebase.indeses.json"
   },
   "functions": [
     {
