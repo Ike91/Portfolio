@@ -1,11 +1,21 @@
 <template>
   <v-container>
     <div class="project-section">
+     <div class="skills-header">
+      <h1>Project</h1>
+    </div>
 
-     <pageHeader v-bind:header-text="header" />
-     <headerText v-bind:header-top-text="discription" />
-    
-      <div class="container">
+     <div class="container text-center summary">
+      <p>
+        As a dedicated programmer, I am constantly striving to improve my skills and expand my knowledge of new programming languages.
+         To demonstrate my abilities, I have developed a number of projects that are available for viewing on my GitHub profile.
+          Some of these projects have also been deployed live on the web, giving me hands-on experience with coding conventions,
+           debugging, and the importance of good software engineering practices.I am passionate about using my skills to create functional and innovative projects,
+         and I welcome the opportunity to collaborate and learn from others'
+      </p>
+    </div>
+    <br>
+    <div class="container">
       <v-row justify-center>
         <v-col>
           <v-card elevation="9" v-for="project in projects" :key="project.name">
@@ -109,11 +119,36 @@ components: {
 };
 </script>
 <style scoped>
-
+.summary {
+  margin-top: 2rem;
+  color: white;
+  font-family:'Times New Roman', Times, serif;
+  font-size: 18px;
+  
+}
 .container {
   margin-bottom: 2em;
   font-size: 18px;
   
+}
+.skills-header {
+  text-align: center;
+  color: white;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  padding: 1rem;
+  position: relative;
+}
+.skills-header:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background-color: #fe4b57;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  border-radius: 2px;
 }
 .top-discription p
 {

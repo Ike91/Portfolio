@@ -34,13 +34,13 @@
                 </a>
                 <br>
                 <v-btn class="mt-3 ml-2" style="border-radius: 20px" @click="dialog = !dialog"   v-if="$route.meta.auth"> Update </v-btn>
-                <v-btn class="mt-3 ml-2" style="border-radius: 20px" @click="resume = !resume"   v-else> resume </v-btn>
+                <v-btn class="mt-3 ml-2" style="border-radius: 20px" @click="openResume()"   v-else> resume </v-btn>
               </div>
           </v-col>
         </v-row>
-        <v-dialog v-model="resume" width="800px">
-          <iframe id="frame" allowtransparency="true" style="background: transparent;" v-bind:src="resumeUrl" frameborder="2" scrolling="auto" width="100%" height="900px" ></iframe>
-        </v-dialog>
+       
+          <!-- <iframe id="frame" allowtransparency="true"  v-bind:src="resumeUrl" frameborder="2" scrolling="auto" width="100%" height="900px" ></iframe> -->
+        
        
       
       <v-dialog v-model="dialog" width="600">
@@ -158,9 +158,16 @@ export default{
       }
   },
   
-  methods : {
+  methods: {
+
+    //Get resume link
+    openResume() {
+      window.open(this.resumeUrl, "_blank");
+    },
+
+    
       //reset the form 
- resetForm() {
+    resetForm() {
     this.$refs.profileForm.reset();
   },
 
@@ -198,7 +205,9 @@ export default{
     //close the dialog
     this.dialog = false;
     });
-  },
+    },
+
+    
 
   //get data.
   async getData() {
@@ -209,10 +218,11 @@ export default{
         querySnapshot.forEach((doc) => {
           this.profile.push(doc.data());
           this.resumeFile = doc.data().resume;
+          console.log(this.resumeFile);
           getDownloadURL(ref(storage, `resume/` +this.resumeFile))
               .then((url) => {
-                 this.resumeUrl = url;
-                 console.log(this.resumeUrl)
+
+                this.resumeUrl = url;
                   }).catch((error) => {
                    
                   });
@@ -241,13 +251,7 @@ mounted()
   margin-top: -4rem !important;
   font-family:'Times New Roman', Times, serif;
 }
-.iframe iframe
-{
-  padding-top: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  background: transparent;
-}
+
 .work-experience
 {
 margin-top: 7rem;

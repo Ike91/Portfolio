@@ -160,7 +160,7 @@ export default {
   transform: translateX(-50%);
   width: 100px;
   height: 4px;
-  background-color: rgb(143, 142, 142);
+  background-color: #fe4b57;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   border-radius: 2px;
 }
